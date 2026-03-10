@@ -1,0 +1,35 @@
+"use client"
+
+import { useRouter } from "next/navigation";
+
+function Form() {
+    const rout = useRouter();
+    const handleSubmit = () => {
+        rout.push("/signin/forgetpassword/otp")
+    }
+    return (
+        <form className='mt-clamp-48' onSubmit={(e)=>{
+            e.preventDefault();
+            handleSubmit();
+        }}>
+            <div className='flex flex-col gap-clamp-24'>
+                {/* email  */}
+                <div>
+                    <input type='email' className='input' placeholder='Enter email address*' />
+                </div>
+
+                {/* sign in btn  */}
+                <div>
+                    <button  className='bg-gold100 h-clamp-56 flex gap-clamp-10 py-clamp-16 px-clamp-28 text-clamp-18 font-bold text-balance uppercase leading-[0.7] rounded-[2px] w-full text-center justify-center items-center uppercase'>
+                        Submit
+                        <svg className='text-clamp-24 w-clamp-24 h-clamp-24' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M19 3C19.5523 3 20 3.44772 20 4V18C20 19.6569 18.6569 21 17 21H9C8.44772 21 8 20.5523 8 20C8 19.4477 8.44772 19 9 19H17C17.5523 19 18 18.5523 18 18V5H9C8.44772 5 8 4.55228 8 4C8 3.44772 8.44772 3 9 3H19ZM11.6172 8.07617C11.9909 7.92139 12.421 8.00697 12.707 8.29297L15.707 11.293C16.0976 11.6835 16.0976 12.3165 15.707 12.707L12.707 15.707C12.421 15.993 11.9909 16.0786 11.6172 15.9238C11.2436 15.769 11 15.4044 11 15V13H5C4.44772 13 4 12.5523 4 12C4 11.4477 4.44772 11 5 11H11V9C11 8.59558 11.2436 8.23098 11.6172 8.07617Z" fill="#FEFEFE" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </form>
+    )
+}
+
+export default Form
