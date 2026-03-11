@@ -20,9 +20,9 @@ export default function Swipper({ content = [] }) {
         spaceBetween={0}
         onProgress={handleProgress}
         breakpoints={{
-          0:    { slidesPerView: 1, spaceBetween: 0 },
+          0:    { slidesPerView: 1, spaceBetween: 0},
           640:  { slidesPerView: 2, spaceBetween: 0 },
-          1024: { slidesPerView: 4, spaceBetween: 0 },
+          1024: { slidesPerView: 4, spaceBetween: 0},
         }}
         className="mySwiper text-balance w-full"
       >

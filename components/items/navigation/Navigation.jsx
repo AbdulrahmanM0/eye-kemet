@@ -1,17 +1,21 @@
 import Link from 'next/link'
 
-function Navigation() {
+function Navigation({ pagination }) {
     return (
         <div className='flex justify-center gap-clamp-14 text-clamp-16 text-gray200 leading-[0.7]'>
             <Link href={"/"}>
                 Home
             </Link>
-            <span>
-                /
-            </span>
-            <Link href={"#"}>
-                Sign in
-            </Link>
+            {pagination.map((item, index) => (
+                <>
+                    <span key={index}>
+                        /
+                    </span>
+                    <Link key={index+item.title} href={item.Link || "#"}>
+                        {item.title}
+                    </Link>
+                </>
+            ))}
         </div>
     )
 }

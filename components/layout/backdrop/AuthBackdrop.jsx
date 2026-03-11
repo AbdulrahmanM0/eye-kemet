@@ -3,7 +3,7 @@ import React from 'react'
 function AuthBackdrop({ children }) {
     return (
         <section>
-            <div className='min-h-screen max-h-[1920px] bg-full flex flex-col items-center'>
+            <div className='h-screen max-h-[1080px] bg-full flex flex-col items-center'>
                 {/* screen  */}
                 <div className='absolute z-0 w-full h-full top-0 left-0'>
                     <svg className='w-full h-full' xmlns="http://www.w3.org/2000/svg" width="1920" height="940" viewBox="0 0 1920 940" fill="none">

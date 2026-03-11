@@ -1,4 +1,3 @@
-import Secondary from '@/components/btn/Secondary'
 import Product from '@/components/cards/Product'
 import { products } from '@/data/products'
 

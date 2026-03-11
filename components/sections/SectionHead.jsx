@@ -2,15 +2,15 @@ import React from 'react'
 import Navigation from '../items/navigation/Navigation'
 import Image from 'next/image'
 
-function SectionHead() {
+function SectionHead({data}) {
     return (
         <section>
             <div className='bg-full'>
                 {/* navigation & title  */}
                 <div className='p-clamp-60 text-center flex flex-col gap-clamp-40'>
-                    <Navigation />
-                    <h4 className='text-light400 text-clamp-36 font-bold leading-[0.7] uppercase'>
-                        Shop Now
+                    <Navigation {...data}/>
+                    <h4 className='text-light400 text-clamp-36 font-bold leading-none uppercase'>
+                        {data?.title ? data.title : "Shop Now"}
                     </h4>
                 </div>
                 {/* bannar  */}
