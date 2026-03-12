@@ -2,7 +2,6 @@ import Navigation from '@/components/items/navigation/Navigation'
 import React from 'react'
 import ContactForm from './utilies/Form'
 import Details from './utilies/Details'
-import ShareLinks from '@/components/items/links/ShareLinks'
 
 function Contact() {
     const data = {

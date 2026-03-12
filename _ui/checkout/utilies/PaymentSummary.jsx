@@ -53,7 +53,7 @@ function PaymentSummary() {
                             Do you have a discount code?
                         </p>
 
-                        <div className="flex">
+                        <div className="flex flex-wrap gap-clamp-24 sm:gap-0 max-w-full">
                             <input
                                 type="text"
                                 className="flex-1 border border-gray300 bg-wd500 px-clamp-20 py-clamp-20 focus:outline-none focus:ring-2 focus:ring-gold100 rounded-[2px] text-clamp-18 placeholder-gray200 placeholder-text-clamp-16"
@@ -61,7 +61,7 @@ function PaymentSummary() {
                             />
 
                             <button
-                                className="bg-gold100 flex items-center justify-center gap-clamp-10 px-clamp-28 py-clamp-16 text-clamp-18 font-bold text-balance uppercase rounded-[2px]"
+                                className="w-full sm:w-fit bg-gold100 flex items-center justify-center gap-clamp-10 px-clamp-28 py-clamp-16 text-clamp-18 font-bold text-balance uppercase rounded-[2px]"
                             >
                                 Apply
                                 <svg

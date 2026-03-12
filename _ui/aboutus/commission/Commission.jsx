@@ -660,7 +660,7 @@ function Commission() {
                 </div>
 
                 {/* card  */}
-                <div className='p-clamp-100 flex flex-col justify-center items-center gap-clamp-48 text-center'>
+                <div className='relative z-10 p-clamp-100 flex flex-col justify-center items-center gap-clamp-48 text-center'>
                     {/* icon  */}
                     <svg xmlns="http://www.w3.org/2000/svg" width="68" height="60" viewBox="0 0 68 60" fill="none">
                         <g clip-path="url(#clip0_155_2654)">

@@ -1,10 +1,10 @@
 import { testmonials } from "@/data/testmonials"
 import Comment from "./utilis/Comment"
-function Testmonials() {
+function TestmonialsSection() {
     return (
         <section>
             <div className='bg-full'>
-                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 justify-items-center pb-clamp-64 gap-y-clamp-24'>
+                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 justify-items-center pb-clamp-64'>
                     {testmonials.concat(testmonials).map((item, index) => (
                         <Comment key={item.auther + index} {...item} />
                     ))}
@@ -26,4 +26,4 @@ function Testmonials() {
     )
 }
 
-export default Testmonials
+export default TestmonialsSection

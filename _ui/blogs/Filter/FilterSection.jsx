@@ -1,6 +1,6 @@
 import React from 'react'
 import DropFilter from './utilies/Dropdowen'
-import { filters, sort } from '@/data/filters'
+import { sort } from '@/data/filters'
 import Navigation from '../navigation/Navigation'
 
 function FilterSection() {

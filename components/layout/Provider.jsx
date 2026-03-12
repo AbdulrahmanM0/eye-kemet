@@ -1,9 +1,12 @@
-import React from 'react'
+import Header from './header/Header'
+import Footer from './footer/Footer'
 
-function Provider({children}) {
+function Provider({ children }) {
   return (
-    <div className='max-layout mx-auto'>
-        {children}
+    <div className='max-layout mx-auto relative'>
+      <Header />
+      {children}
+      <Footer />
     </div>
   )
 }

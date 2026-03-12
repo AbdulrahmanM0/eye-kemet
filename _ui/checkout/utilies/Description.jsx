@@ -52,7 +52,7 @@ function Description() {
                             </p>
                         </div>
 
-                        <div className="flex gap-clamp-20">
+                        <div className="flex flex-wrap gap-clamp-20">
                             <div className="text-light400 text-clamp-18">
                                 Quantity: 1
                             </div>

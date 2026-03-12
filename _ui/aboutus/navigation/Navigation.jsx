@@ -1,32 +1,35 @@
-import React from 'react'
+"use client"
 
-function Navigation({active = 1}) {
+import React from "react"
+import { Link } from "react-scroll"
+
+function Navigation() {
     const navs = [
-        {
-            title: "Our story",
-            id: 1
-        },
-        {
-            title: "our mission",
-            id: 2
-        },
-        {
-            title: "our vision",
-            id: 3
-        },
-        {
-            title: "our values",
-            id: 4
-        },
+        { title: "Our story", target: "story" },
+        { title: "Our mission", target: "mission" },
+        { title: "Our vision", target: "vision" },
+        { title: "Our values", target: "values" },
     ]
+
     return (
-        <section className='hidden sm:block'>
-            <div className='border-b border-b-gray400 bg-full text-balance flex justify-center'>
-                {navs.map((item, index) => (
-                    <div key={index + item.title} className={`p-clamp-32 leading-[0.7] text-clamp-18 uppercase font-bold whitespace-nowrap ${active === item.id ? "text-gold100 border-b border-b-gold100" : ""}`}>
+        <section className="hidden sm:block sticky top-[var(--header-height)] z-30">
+            <div className="border-b border-b-gray400 bg-full text-balance flex justify-center">
+
+                {navs.map((item) => (
+                    <Link
+                        key={item.target}
+                        to={item.target}
+                        spy={true}
+                        smooth={true}
+                        offset={-100}
+                        duration={500}
+                        activeClass="text-gold100 border-b border-b-gold100"
+                        className="p-clamp-32 leading-[0.7] text-clamp-18 uppercase font-bold whitespace-nowrap cursor-pointer"
+                    >
                         {item.title}
-                    </div>
+                    </Link>
                 ))}
+
             </div>
         </section>
     )

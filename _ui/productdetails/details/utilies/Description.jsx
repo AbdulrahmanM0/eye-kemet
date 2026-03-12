@@ -7,7 +7,7 @@ function Description() {
     const [openCart, setOpenCart] = useState(false);
 
     return (
-        <div className='flex flex-col gap-clamp-42'>
+        <div className='flex flex-col gap-clamp-30 3xl:gap-clamp-42'>
             {/* navigation */}
             <div className='flex gap-clamp-14 text-clamp-16 leading-[0.7] text-gray200'>
                 <Link href={"/"}>Home</Link><span>/</span><Link href={"/products"}>Products</Link><span>/</span><span className='text-light400 whitespace-nowrap'>Ring Waterdrop</span>
@@ -15,7 +15,7 @@ function Description() {
 
             {/* title  */}
             <div>
-                <h3 className='text-clamp-64 text-light400 uppercase font-bold leading-none'>
+                <h3 className=' 2xl:text-clamp-64 text-light400 uppercase font-bold leading-none'>
                     Ring Waterdrop
                 </h3>
             </div>

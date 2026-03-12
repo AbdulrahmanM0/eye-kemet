@@ -4,18 +4,18 @@ import React from 'react'
 
 function PaymentMethod() {
     return (
-        <section className='grid grid-cols-1 sm:grid-cols-2 gap-clamp-20'>
+        <section className='grid grid-cols-1 sm:grid-cols-2 gap-clamp-20 min-w-[320px]'>
             <div className="sm:col-span-2 flex flex-col gap-clamp-24">
                 <h3 className='text-clamp-36 text-light400 uppercase font-bold leading-none'>
-                    Your address
+                    Payment method
                 </h3>
                 <p className="text-clamp-18 text-gray200 leading-none">
-                    Fill the requirement data below
+                    Choose the payment method that works best for you. All transactions are secure and encrypted.
                 </p>
             </div>
 
             {/* payment options  */}
-            <div className=' sm:col-span-2 p-clamp-32 grid md:grid-cols-2 gap-clamp-24 border border-gray400'>
+            <div className='sm:col-span-2 p-clamp-32 grid lg:grid-cols-2 gap-clamp-24 border border-gray400'>
                 {paymentmethods.map((item, index) => (
                     <div className='p-clamp-20 w-full gap-clamp-16 flex bg-wd500'>
                         {/* checkbox  */}

@@ -4,15 +4,15 @@ function Hero() {
     const data = {
         pagination: [
             {
-                title: "Products",
-                link: "/products"
+                title: "Support",
+                link: "/support"
             }
         ],
-        title: "Shop Now"
+        title: "Customer Support"
     }
     return (
         <>
-            <SectionHead data={data}/>
+            <SectionHead data={data} />
         </>
     )
 }
