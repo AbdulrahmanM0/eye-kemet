@@ -2,14 +2,28 @@
 
 import { useState } from "react";
 import Timer from "./Timer"
+import UseSubmit from "@/_ui/auth/signin/hooks/UseSubmit";
+import UseResend from "../hooks/UseResend";
 
-function Resend() {
-    const [time, setTime] = useState(12 * 60);
+function Resend({ phone }) {
+    const { time, setTime, handleResend, isSubmitting } = UseResend({ phone });
 
     return (
         <div className='flex flex-col gap-clamp-24'>
             {/* resend otp  */}
-            <button onClick={(e)=>{e.preventDefault(); setTime(12 * 60)}} className='text-clamp-18 font-bold leading-[1.14] underline text-gold100 uppercase underline'>
+            <button disabled={isSubmitting || time} onClick={handleResend} className='flex items-center justify-center gap-clamp-8 text-clamp-18 font-bold leading-[1.14] underline text-gold100 uppercase underline disabled:opacity-60'>
+                {
+                    isSubmitting &&
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-clamp-24 h-clamp-24 fill-current text-gold100 animate-spin"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                    >
+                        <path d="M12 1.99988C17.5228 1.99988 22 6.47703 22 11.9999C22 17.5227 17.5228 21.9999 12 21.9999C6.47715 21.9999 2 17.5227 2 11.9999C2 9.98412 2.59925 8.10896 3.625 6.53894L2.29297 5.20691C2.00697 4.92091 1.92139 4.49074 2.07617 4.11707C2.23098 3.74346 2.59558 3.49988 3 3.49988H7C7.55228 3.49988 8 3.94759 8 4.49988V8.49988C8 8.90429 7.75641 9.26889 7.38281 9.42371C7.00914 9.57849 6.57897 9.49291 6.29297 9.20691L5.07715 7.99109C4.39285 9.17015 4 10.5387 4 11.9999C4 16.4182 7.58172 19.9999 12 19.9999C16.4183 19.9999 20 16.4182 20 11.9999C20 7.5816 16.4183 3.99988 12 3.99988C11.4477 3.99988 11 3.55216 11 2.99988C11 2.44759 11.4477 1.99988 12 1.99988Z" />
+                    </svg>
+                }
                 Resend OTP
             </button>
 
@@ -26,15 +40,17 @@ function Resend() {
             </div>
 
             {/* timer  */}
-            <div className='flex gap-clamp-10 text-light200 leading-[0.7] justify-center items-center'>
-                <p>
-                    Resend OTP on email in
-                </p>
-                <Timer time={time} setTime={setTime}/>
-                <p>
-                    Second
-                </p>
-            </div>
+            {time > 0 &&
+                <div className='flex gap-clamp-10 text-light200 leading-[0.7] justify-center items-center'>
+                    <p >
+                        Resend OTP After
+                    </p>
+                    <Timer time={time} setTime={setTime} />
+                    <p>
+                        Second
+                    </p>
+                </div>
+            }
         </div>
     )
 }

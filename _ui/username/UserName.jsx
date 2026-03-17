@@ -2,16 +2,10 @@ import Authintication from '@/components/cards/Authintication'
 import Navigation from '@/components/items/navigation/Navigation'
 import Form from './utilies/Form'
 import AuthBackdrop from '@/components/layout/backdrop/AuthBackdrop'
+import Link from 'next/link'
 
-function Singin() {
-    const data = {
-        pagination: [
-            {
-                title: "Sign in",
-                link: "/signin"
-            },
-        ],
-    }
+function UserName({ searchParams, data }) {
+    console.log(searchParams)
     return (
         <AuthBackdrop>
             <div className='h-fit my-auto relative z-10'>
@@ -19,15 +13,16 @@ function Singin() {
                 <div className='mb-clamp-54'>
                     <Navigation {...data} />
                 </div>
+
                 {/* form card  */}
                 <div>
-                    <Authintication title="Sign In to your Account" head="Welcome back" slogan="If you have an account, sign in with your phone number.">
-                        <Form />
+                    <Authintication title="User Name" head="Welcome" slogan="Type your name in the field below.">
+                        <Form phone={searchParams?.phone} otp={searchParams?.otp} />
                     </Authintication>
                 </div>
             </div>
-        </AuthBackdrop >
+        </AuthBackdrop>
     )
 }
 
-export default Singin
+export default UserName

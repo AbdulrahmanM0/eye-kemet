@@ -6,7 +6,7 @@ function Navigation({ pagination }) {
             <Link href={"/"}>
                 Home
             </Link>
-            {pagination.map((item, index) => (
+            {pagination?.length > 0 && pagination.map((item, index) => (
                 <>
                     <span key={index}>
                         /

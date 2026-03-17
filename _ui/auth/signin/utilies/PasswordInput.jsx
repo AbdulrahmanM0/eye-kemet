@@ -12,6 +12,7 @@ export default function PasswordInput() {
         placeholder="Password*"
         className="w-full input pr-12 rounded-lg 
                    transition-all duration-200"
+        name="password"
       />
 
       {/* Eye Icon */}

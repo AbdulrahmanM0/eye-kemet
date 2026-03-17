@@ -1,18 +1,20 @@
 "use client"
 import UseSubmit from '../hooks/UseSubmit';
-import { InputOTPPattern } from './OTPInput';
 import Resend from './Resend';
 
-function Form({ phone }) {
-    const { onSubmit, register, handleSubmit, errors, isSubmitting, control } = UseSubmit({ phone })
+function Form({ phone,otp }) {
+    const { onSubmit, register, handleSubmit, errors, isSubmitting } = UseSubmit({ phone ,otp })
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className='mt-clamp-48'>
             <div className='flex flex-col gap-clamp-24'>
 
-                {/* otp code */}
+                {/* name */}
                 <div>
-                    <InputOTPPattern control={control}/>
+                    <input {...register("name")} name='name' type='text' className='input' placeholder='User name *' />
+                    {errors.name && (
+                        <p className="text-red100 text-clamp-18 mt-1">{errors?.name?.message}</p>
+                    )}
                 </div>
 
                 {/* sign up btn  */}
@@ -43,7 +45,7 @@ function Form({ phone }) {
                     <p className='text-clamp-18 leading-[0.7] text-gray200 w-full text-center'>
                         Didn't get the OTP?
                     </p>
-                    <Resend phone={phone}/>
+                    <Resend />
                 </div>
             </div>
         </form>

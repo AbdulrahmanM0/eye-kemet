@@ -1,8 +1,10 @@
+import handleDeals from '@/api/home/Deals'
 import PrimaryBtn from '@/components/btn/Primary'
 import Product from '@/components/cards/Product'
 import Swipper from '@/components/swiper/products/Swipper'
 import { products } from '@/data/products'
-function Exclusive({title,slogan}) {
+async function Exclusive({ title, slogan }) {
+    const deals = await handleDeals()
     return (
         <section>
             <div className='bg-full py-clamp-100 '>
@@ -25,7 +27,7 @@ function Exclusive({title,slogan}) {
 
                 {/* swiper  */}
                 <div>
-                    <Swipper content={products.map((item,index) => (<Product key={item.title + index} {...item}/>))}/>
+                    <Swipper content={products.map((item, index) => (<Product key={item.title + index} {...item} />))} />
                 </div>
             </div>
         </section>

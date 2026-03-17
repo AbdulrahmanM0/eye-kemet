@@ -4,7 +4,6 @@ import Cart from '@/components/cart/Cart'
 import Link from 'next/link'
 
 function Description() {
-    const [openCart, setOpenCart] = useState(false);
 
     return (
         <div className='flex flex-col gap-clamp-30 3xl:gap-clamp-42'>
@@ -115,7 +114,7 @@ function Description() {
             {/* add btn  */}
             <div>
                 <button
-                    onClick={() => setOpenCart(true)}
+                    // onClick={() => setOpenCart(true)}
                     className="secondary-btn px-clamp-28 py-clamp-16"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -156,9 +155,6 @@ function Description() {
                     </span>
                 </div>
             </div>
-
-
-            <Cart open={openCart} setOpen={setOpenCart}/>
         </div>
     )
 }
