@@ -4,8 +4,9 @@ import Link from 'next/link';
 import FullScreenDrawer from './utilies/Drawer';
 import useHeader from './hooks/useHeader';
 import useCart from './hooks/useCart';
+import ProfileORSign from './utilies/ProfileORSign';
 
-function Header() {
+function Header({name = false,value = false}) {
     const { handleDrawer, isSticky, scrolled, setOpen, open } = useHeader();
     const { handleCartToggle } = useCart();
     
@@ -48,21 +49,14 @@ function Header() {
                     {/* signin & cart */}
                     <div className='flex gap-clamp-20 items-stretch'>
                         {/* cart */}
-                        <div onClick={handleCartToggle} className='p-clamp-16 bg-full border border-gray400 rounded-[2px] flex items-center justify-center'>
+                        <div onClick={handleCartToggle} className='cursor-pointer shrink-0 p-clamp-16 bg-full border border-gray400 rounded-[2px] flex items-center justify-center'>
                             <svg xmlns="http://www.w3.org/2000/svg" className='w-clamp-24 h-clamp-24' viewBox="0 0 24 24" fill="none">
                                 <path d="M8.50977 19C9.33819 19 10.0098 19.6716 10.0098 20.5V20.5098C10.0098 21.3382 9.33819 22.0098 8.50977 22.0098H8.5C7.67157 22.0098 7 21.3382 7 20.5098V20.5C7 19.6716 7.67157 19 8.5 19H8.50977ZM17.5098 19C18.3382 19 19.0098 19.6716 19.0098 20.5V20.5098C19.0098 21.3382 18.3382 22.0098 17.5098 22.0098H17.5C16.6716 22.0098 16 21.3382 16 20.5098V20.5C16 19.6716 16.6716 19 17.5 19H17.5098ZM5 2C5.52239 2 5.95678 2.40207 5.99707 2.92285L6.15625 5H21C21.2844 5 21.5554 5.12109 21.7451 5.33301C21.9348 5.54493 22.0255 5.82768 21.9941 6.11035L21.1777 13.4551C21.0179 14.8936 19.8538 16.013 18.4102 16.1162L8.05566 16.8555C6.40951 16.9731 4.97733 15.7392 4.85059 14.0938L4.2334 6.07715L4.07422 4H3C2.44772 4 2 3.55228 2 3C2 2.44772 2.44772 2 3 2H5Z" fill="#AE7929" />
                             </svg>
                         </div>
 
                         {/* sign in */}
-                        <div className='w-fit hidden sm:block'>
-                            <Link href={"/signin"} className='secondary-btn whitespace-nowrap shrink-0 !w-fit flex items-center justify-center h-full'>
-                                Sign in
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path d="M19 3C19.5523 3 20 3.44772 20 4V18C20 19.6569 18.6569 21 17 21H9C8.44772 21 8 20.5523 8 20C8 19.4477 8.44772 19 9 19H17C17.5523 19 18 18.5523 18 18V5H9C8.44772 5 8 4.55228 8 4C8 3.44772 8.44772 3 9 3H19ZM11.6172 8.07617C11.9909 7.92139 12.421 8.00697 12.707 8.29297L15.707 11.293C16.0976 11.6835 16.0976 12.3165 15.707 12.707L12.707 15.707C12.421 15.993 11.9909 16.0786 11.6172 15.9238C11.2436 15.769 11 15.4044 11 15V13H5C4.44772 13 4 12.5523 4 12C4 11.4477 4.44772 11 5 11H11V9C11 8.59558 11.2436 8.23098 11.6172 8.07617Z" fill="#FEFEFE" />
-                                </svg>
-                            </Link>
-                        </div>
+                        <ProfileORSign name={name} value={value} />
                     </div>
                 </div>
             </header>

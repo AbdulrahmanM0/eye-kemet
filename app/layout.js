@@ -1,14 +1,15 @@
 import "@/styles/globals.scss";
-import Provider from "@/components/layout/Provider";
+
+import Authinticated from "@/components/layout/Authinticated";
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
-      <body
-      >
-        <Provider>
+      <body>
+        <Authinticated>
           {children}
-        </Provider>
+        </Authinticated>
       </body>
     </html>
   );

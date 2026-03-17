@@ -7,11 +7,11 @@ import { store } from '@/store/store';
 import Cart from '../cart/Cart';
 import "react-phone-number-input/style.css";
 
-function ProviderContainer({ children }) {
+function ProviderContainer({ children,customer }) {
   return (
     <div className='max-layout mx-auto relative'>
       <Provider store={store}>
-        <Header />
+        <Header {...customer}/>
         {children}
         <Footer />
         <ToastContainer theme="dark" />
