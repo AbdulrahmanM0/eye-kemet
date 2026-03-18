@@ -24,7 +24,7 @@ export default function Shop() {
         <section>
             <div className='px-[clamp(20px,5.208vw,100px)] bg-full'>
                 <div className='py-[clamp(20px,5.208vw,100px)]'>
-                    <div className='w-full h-full flex gap-clamp-72 flex-wrap md:flex-nowrap'>
+                    <div data-aos="fade-up" data-aos-duration="1000" className='w-full h-full flex gap-clamp-72 flex-wrap md:flex-nowrap' >
                         {/* cards  */}
                         {cards.map((item, index) => (
                             <Card key={item.title + index} {...item} />

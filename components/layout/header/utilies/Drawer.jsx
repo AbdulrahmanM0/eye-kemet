@@ -47,8 +47,6 @@ function FullScreenDrawer({ open, onClose, setOpen }) {
     },
   ]
 
-  console.log(pathname)
-
   return (
 
     <div

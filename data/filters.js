@@ -104,18 +104,22 @@ export const sort = {
         {
             id: 1,
             title: "Recommendation",
+            value: "recommend"
         },
         {
             id: 2,
             title: "New Arrivals",
+            value: "new_arrival"
         },
         {
             id: 3,
             title: "Price from High to Low",
+            value: "high"
         },
         {
             id: 4,
             title: "Price from Low to High",
+            value: "low"
         },
     ]
 }

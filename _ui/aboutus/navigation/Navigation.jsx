@@ -13,7 +13,7 @@ function Navigation() {
 
     return (
         <section className="hidden sm:block sticky top-[var(--header-height)] z-30">
-            <div className="border-b border-b-gray400 bg-full text-balance flex justify-center">
+            <div data-aos="fade-left" className="border-b border-b-gray400 bg-full text-balance flex justify-center">
 
                 {navs.map((item) => (
                     <Link

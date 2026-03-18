@@ -1,8 +1,12 @@
-import React from 'react'
 import DropFilter from './utilies/Dropdowen'
-import { filters ,sort } from '@/data/filters'
+import { filters, sort } from '@/data/filters'
+import handleCategories from '@/api/home/Categories'
+import SortDropdown from './utilies/SortDropdowen';
 
-function FilterSection() {
+async function FilterSection({deals}) {
+    const categories_products = await handleCategories();
+    console.log("categories_products", deals.filters[0])
+
     return (
         <section>
             <div className='py-clamp-32 px-clamp-40 bg-full border-b border-b-gray400'>
@@ -16,7 +20,7 @@ function FilterSection() {
                         {/* dropdowens  */}
                         {filters.map((item, index) => (
                             <div key={item.title + index}>
-                                <DropFilter {...item} />
+                                <DropFilter {...item} type="filter"/>
                             </div>
                         ))}
                     </div>
@@ -28,9 +32,9 @@ function FilterSection() {
                         </div>
 
                         {/* dropdowens  */}
-                            <div>
-                                <DropFilter {...sort} />
-                            </div>
+                        <div>
+                            <SortDropdown {...sort} />
+                        </div>
                     </div>
                 </div>
             </div>

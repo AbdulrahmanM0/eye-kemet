@@ -2,22 +2,24 @@
 import Image from 'next/image'
 import Secondary from '../btn/Secondary'
 import React, { useRef, useEffect, useState } from "react";
+import useProduct from './hooks/useProduct';
+import Link from 'next/link';
 
-function Product({ title, price, img, type, views, gold, stock }) {
+function Product({ name, price, image_url, type, views, gold, category_name, is_available, id, seo_keywords, customer_id = "" }) {
     const divRef = useRef(null);
     const [margin, setMargin] = useState(0);
-
     useEffect(() => {
         if (divRef.current) {
             setMargin(divRef.current.offsetHeight);
         }
     }, []);
+    const { handleAddToCart } = useProduct({ customer_id });
 
     return (
-        <div className='flex flex-col h-[clamp(200px,62.22vh,672px)] bg-full group hover:bg-wd600 border border-gray400 relative'>
+        <Link href={`/products/${id}`} data-aos="fade-down" className='flex flex-col h-[clamp(200px,62.22vh,672px)] bg-full group hover:bg-wd600 border border-gray400 relative'>
             <div className='flex-1 relatve'>
                 {/* heading  */}
-                <div className='p-clamp-36 flex gap-clamp-10 absolute top-0 left-0'>
+                <div className='p-clamp-36 flex gap-clamp-10 absolute top-0 left-0 z-10'>
                     {/* gold  */}
                     <div className='py-clamp-12 px-clamp-16 text-clamp-16 leading-[0.7] text-balance bg-gold100 whitespace-nowrap shrink-0'>
                         {gold}
@@ -28,13 +30,13 @@ function Product({ title, price, img, type, views, gold, stock }) {
                     </div>
                     {/* type  */}
                     <div className='py-clamp-12 px-clamp-16 text-clamp-16 leading-[0.7] text-gray200 bg-gray400'>
-                        {type}
+                        {category_name}
                     </div>
                 </div>
 
                 {/* image  */}
                 <div className='relative flex-1 h-full'>
-                    <Image src={`/images/products/${img}`} className='object-contain' fill alt={title} />
+                    <Image src={image_url} className='object-cover' fill alt={name} />
                 </div>
             </div>
 
@@ -42,29 +44,21 @@ function Product({ title, price, img, type, views, gold, stock }) {
             <div className='p-clamp-36 text-center overflow-hidden absolute bottom-0 left-0 w-full flex flex-col gap-clamp-24'>
                 {/* title  */}
                 <div>
-                    <h5 className='leading-[0.7] text-balance uppercase font-bold text-clamp-28'>
-                        {title}
+                    <h5 className='leading-[1.2] text-balance uppercase font-bold text-clamp-28' title={seo_keywords}>
+                        {name}
                     </h5>
                 </div>
                 {/* price  */}
                 <div className='text-gray200 text-clamp-18 flex gap-clamp-10 justify-center'>
-                    {/* from  */}
+
                     <div>
-                        From:
+                        {/* {price.from} */}
+                        {price}
                     </div>
-                    <div>
-                        {price.from}
-                    </div>
-                    <span>
-                        -
-                    </span>
-                    {/* to  */}
-                    <div>
-                        {price.to}
-                    </div>
+
                     {/* currancy  */}
                     <div>
-                        {price.currancy}
+                        EGP
                     </div>
                 </div>
 
@@ -72,9 +66,9 @@ function Product({ title, price, img, type, views, gold, stock }) {
                 <div ref={divRef}
                     style={{ marginBottom: `-${margin + 36}px` }} className="flex flex-col gap-clamp-24 transition-all duration-500 mb-[-100%] group-hover:!mb-0">
 
-                    <div className={`p-clamp-12 flex gap-clamp-14 ${stock ? " text-green100 " : " text-red100 "} text-clamp-18 leading-[0.7] items-center justify-center`}>
+                    <div className={`p-clamp-12 flex gap-clamp-14 ${is_available ? " text-green100 " : " text-red100 "} text-clamp-18 leading-[0.7] items-center justify-center`}>
                         {/* icon  */}
-                        {stock ?
+                        {is_available ?
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                                 <path d="M17 0C17.5523 0 18 0.447715 18 1V15C18 16.6569 16.6569 18 15 18H3C1.34315 18 0 16.6569 0 15V1C0 0.447715 0.447715 0 1 0H17ZM12.707 6.29199C12.3165 5.90151 11.6835 5.90151 11.293 6.29199L8 9.58496L6.70703 8.29199C6.31651 7.90151 5.68349 7.90151 5.29297 8.29199C4.90245 8.68251 4.90247 9.31553 5.29297 9.70605L7.29297 11.7061C7.68349 12.0966 8.31651 12.0966 8.70703 11.7061L12.707 7.70605C13.0975 7.31553 13.0975 6.68251 12.707 6.29199Z" fill="#40D465" />
                             </svg>
@@ -84,15 +78,15 @@ function Product({ title, price, img, type, views, gold, stock }) {
                             </svg>
                         }
                         {/* text  */}
-                        {stock ? "In Stock" : "Out Of Stock "}
+                        {is_available ? "In Stock" : "Out Of Stock "}
                     </div>
 
-                    <div className='w-full'>
+                    <div onClick={(e) => { e.stopPropagation(); handleAddToCart(id) }} className='w-full'>
                         <Secondary />
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 

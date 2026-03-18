@@ -3,7 +3,7 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import Link from "next/link"
 
-export default function TabsDetails() {
+export default function TabsDetails({ details }) {
     return (
         <div className="w-full text-balance py-clamp-88">
             <Tabs defaultValue="details" className="w-full">
@@ -92,8 +92,8 @@ export default function TabsDetails() {
                 {/* DETAILS */}
                 <TabsContent value="details">
                     <div className="flex flex-col gap-clamp-28 pt-clamp-28">
-                        <p className="text-clamp-16 text-gray200">
-                            Crafted with precision, the Waterdrop Ring embodies minimalist elegance. Its fluid design and radiant finish reflect light with every movement, evoking a sense of serene beauty and understated luxury.
+                        <p className="text-clamp-14 3xl:text-clamp-16 text-gray200">
+                            {details?.description}
                         </p>
                         <div>
                             <p className="text-gray200 text-clamp-16 mb-clamp-8">Style# 88435R-18RB-DD</p>

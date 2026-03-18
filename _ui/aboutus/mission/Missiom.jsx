@@ -9,7 +9,7 @@ function Mission() {
                     <div className='px-[clamp(20px,5.208vw,100px)] w-full h-full overflow-hidden'>
                         <div className='py-[clamp(20px,5.208vw,100px)] w-full h-full flex items-center'>
                             <div className="flex flex-col gap-clamp-82 text-center">
-                                <h6 className='text-balance text-clamp-18 leading-[0.7] pb-clamp-54'>
+                                <h6 data-aos="fade-down" className='text-balance text-clamp-18 leading-[0.7] pb-clamp-54'>
                                     Our Mission
                                 </h6>
 
@@ -65,11 +65,11 @@ function Mission() {
             </AuthBackdrop>
             <div className="absolute top-0 left-0 w-full h-full px-clamp-100 flex justify-between z-10">
                 {/* col1  */}
-                <div className="h-full pt-clamp-88">
+                <div data-aos="zoom-in-right" className="h-full pt-clamp-88">
                     <Image src={"/images/backdrops/nicle.png"} className="sticky top-clamp-100 w-[clamp(220px,22.66vw,435px)]" width={435} height={359} alt="" />
                 </div>
                 {/* col2 */}
-                <div className="h-full flex flex-col">
+                <div data-aos="zoom-in-left" className="h-full flex flex-col">
                     <Image src={"/images/backdrops/eyeAngel.png"} className="mt-auto w-[clamp(215px,21.61vw,415px)]" width={415} height={571} alt="" />
                 </div>
             </div>

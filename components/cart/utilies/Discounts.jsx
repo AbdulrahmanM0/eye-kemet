@@ -5,7 +5,7 @@ import "swiper/css"
 import "swiper/css/navigation"
 import { Navigation } from "swiper/modules"
 
-export default function Discounts() {
+export default function Discounts({ capaigns }) {
     const prevRef = useRef(null)
     const nextRef = useRef(null)
 
@@ -38,9 +38,9 @@ export default function Discounts() {
                 }}
                 className="mySwiper text-light400 text-clamp-18 text-center"
             >
-                <SwiperSlide>EGP 400 Off on orders over EGP 15,000</SwiperSlide>
-                <SwiperSlide>EGP 300 Off on orders over EGP 10,000</SwiperSlide>
-                <SwiperSlide>EGP 200 Off on orders over EGP 5,000</SwiperSlide>
+                {capaigns.map((item, index) => (
+                    <SwiperSlide key={index+name}>{item.name} {item.min_order_amount && <>on oreders over EGP {item.min_order_amount}</> }</SwiperSlide>
+                ))}
             </Swiper>
         </div>
     )

@@ -1,7 +1,7 @@
 
-function Card({title,icon,body}) {
+function Card({title,icon,body,index}) {
   return (
-    <div className="flex flex-col gap-clamp-32 text-center">
+    <div className="flex flex-col gap-clamp-32 text-center" data-aos="fade-top" data-aos-duration={(index + 1) * 1600} >
         {/* icon */}
         <div>
             <div className='p-clamp-30 border-[2px] border-gold100 rounded-full w-fit mx-auto'>

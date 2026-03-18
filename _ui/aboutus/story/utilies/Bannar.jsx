@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 function Bannar() {
     return (
-        <div className='relative h-fit pl-clamp-28 pb-[clamp(28px,6.666vw,128px)]'>
+        <div data-aos="fade-left" className='relative h-fit pl-clamp-28 pb-[clamp(28px,6.666vw,128px)]'>
             <div className='translate-x-clamp-100 relative'>
                 <Image src="/images/bannars/pharo.png" width={970} height={664} alt='' />
             </div>

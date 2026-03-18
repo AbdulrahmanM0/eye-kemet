@@ -6,7 +6,7 @@ export default async function handleSginin(formData) {
   const phone = formData.get("phone");
 
   try {
-    const res = await axiosInstance.post("/send-otp", {
+    const res = await axiosInstance.post("functions/v1/send-otp", {
       phone,
     });
 

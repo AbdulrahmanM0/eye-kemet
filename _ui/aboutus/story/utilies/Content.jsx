@@ -2,7 +2,7 @@ import React from 'react'
 
 function Content() {
     return (
-        <div className='flex flex-col gap-clamp-40 lg:w-[clamp(300px,29.1667vw,560px)]'>
+        <div data-aos="fade-up-right" className='flex flex-col gap-clamp-40 lg:w-[clamp(300px,29.1667vw,560px)]' >
             <h6 className='text-balance text-clamp-18 leading-[0.7]'>
                 Our Story
             </h6>

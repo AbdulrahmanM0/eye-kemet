@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 function Card({ title, img, slogan, price }) {
     return (
-        <div className='w-full relative'>
+        <div className='w-full relative' data-aos="zoom-in">
             {/* background  */}
             <Image src={`/images/products/materials/${img}`} className='w-full object-cover min-h-[300px]' width={1720} height={777} alt={title} />
 

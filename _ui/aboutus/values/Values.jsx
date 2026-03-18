@@ -23,7 +23,7 @@ function Values() {
         <section id='values'>
             <div className='p-clamp-100' style={{ backgroundImage: "url(/images/bannars/store.png)",backgroundAttachment: "fixed" }}>
 
-                <div className='flex flex-col gap-clamp-40 h-fit my-auto bg-full p-clamp-64  lg:w-[clamp(300px,42.448vw,815px)]'>
+                <div data-aos="fade-down" className='flex flex-col gap-clamp-40 h-fit my-auto bg-full p-clamp-64  lg:w-[clamp(300px,42.448vw,815px)]'>
                     <h6 className='text-balance text-clamp-18 leading-[0.7]'>
                         Our Story
                     </h6>

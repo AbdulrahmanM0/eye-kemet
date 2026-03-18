@@ -1,20 +1,58 @@
-import { createSlice } from '@reduxjs/toolkit'
+import handleCart from '@/api/cart/cart';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+
+export const cart = createAsyncThunk(
+  'cart/cart',
+  async ({ formData, method }, thunkAPI) => {
+    try {
+      const res = await handleCart({ method, formData })
+      return res.data;
+    } catch (err) {
+      console.log("error", err);
+      return thunkAPI.rejectWithValue(err.response?.data || 'Error adding to cart');
+    }
+  }
+);
 
 const initialState = {
   open: false,
+  cartItems: [],
+  loading: false,
+  error: null,
+  subTotal: 0,
+  shipping: 0,
+  discount: 0,
+  total: 0,
+  tax: 0
 }
 
-export const cartSlice = createSlice({
+const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
     toggle: (state) => {
-      console.log(state, "state")
       state.open = !state.open
     },
+  },
+
+  extraReducers: (builder) => {
+    builder
+      .addCase(cart.pending, (state) => {
+        state.loading = true
+      })
+      .addCase(cart.fulfilled, (state, action) => {
+        state.cartItems = action.payload?.items;
+        state.total = action.payload?.cart?.total;
+        state.subTotal = action.payload?.cart?.subtotal;
+        state.tax = action.payload?.cart?.tax;
+        state.discount = action.payload?.cart?.discount;
+      })
+      .addCase(cart.rejected, (state, action) => {
+        // state.loading = false
+        // state.error = action.payload
+      })
   },
 })
 
 export const { toggle } = cartSlice.actions
-
 export default cartSlice.reducer

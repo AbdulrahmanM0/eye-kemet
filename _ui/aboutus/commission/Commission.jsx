@@ -5,7 +5,7 @@ function Commission() {
         <section>
             <div className='relative bg-wd600 flex flex-col items-center'>
                 {/* screen  */}
-                <div className='absolute z-10 w-full h-full top-0 left-0'>
+                <div data-aos="fade-down" className='absolute z-10 w-full h-full top-0 left-0'>
                     <svg className='w-full h-full' xmlns="http://www.w3.org/2000/svg" width="1920" height="940" viewBox="0 0 1920 940" fill="none">
                         <g opacity="0.7" filter="url(#filter0_f_205_5373)">
                             <path d="M1920 7.5V127.5H1800V7.5H1920ZM1801.02 126.483H1918.98V8.51695H1801.02V126.483Z" fill="url(#paint0_radial_205_5373)" />
@@ -660,7 +660,7 @@ function Commission() {
                 </div>
 
                 {/* card  */}
-                <div className='relative z-10 p-clamp-100 flex flex-col justify-center items-center gap-clamp-48 text-center'>
+                <div data-aos="fade-down" className='relative z-10 p-clamp-100 flex flex-col justify-center items-center gap-clamp-48 text-center'>
                     {/* icon  */}
                     <svg xmlns="http://www.w3.org/2000/svg" width="68" height="60" viewBox="0 0 68 60" fill="none">
                         <g clip-path="url(#clip0_155_2654)">

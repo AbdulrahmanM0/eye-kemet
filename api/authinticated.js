@@ -6,12 +6,11 @@ import { redirect } from "next/navigation";
 export async function getSessionToken() {
   const token = cookies().get("token")?.value;
   const customer = cookies().get("customer")
-
+  
   return { token, customer } || null;
 }
 
 export async function deleteSession() {
-  console.log("TESTaaa")
   const cookieStore = cookies();
 
   cookieStore.set("token", "", { maxAge: 0, path: "/" });

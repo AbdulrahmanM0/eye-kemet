@@ -11,7 +11,7 @@ function About() {
 
                             <div className="flex flex-wrap md:flex-nowrap justify-between gap-clamp-64">
                                 {/* col-1 about us  */}
-                                <div className="flex flex-col gap-clamp-48">
+                                <div data-aos="fade-up" className="flex flex-col gap-clamp-48">
                                     <h6 className="text-balance leading-[0.7] text-clamp-18">
                                         About
                                     </h6>
@@ -21,12 +21,12 @@ function About() {
                                 </div>
 
                                 {/* col-2 image  */}
-                                <div className="relative">
+                                <div className="relative" data-aos="fade-down">
                                     <Image src={"/images/backdrops/eyeAngel.png"} className="max-w-[clamp(200px,29.69vw,570px)]" width={570} height={686} alt="eye angel product" />
                                 </div>
 
                                 {/* col-3 more about */}
-                                <div className="flex flex-col gap-clamp-40">
+                                <div data-aos="fade-up" className="flex flex-col gap-clamp-40">
                                     <p className="text-clamp-18 text-gray200 leading-[1.7]">
                                         At Eye Kemet, we transform your iris into <br/> personalized jewelry. Discover rings,<br/> necklaces, bracelets, and more, each<br/> reflecting your unique essence with artistry.
                                     </p>
@@ -44,7 +44,7 @@ function About() {
                             </div>
 
                             <div className="w-[calc(100%+clamp(20px,5.208vw,100px)+clamp(20px,5.208vw,100px))] -translate-x-[clamp(20px,5.208vw,100px)]">
-                                <h2 className="text-[clamp(30px,16.67vw,320px)] font-bold text-balance uppercase leading-[0.7] w-fit mx-auto mt-clamp-64 md:mt-[clamp(-82px,-3vw,-20px)]">
+                                <h2 data-aos="zoom-in" data-aos-duration="1000" className="text-[clamp(30px,16.67vw,320px)] font-bold text-balance uppercase leading-[0.7] w-fit mx-auto mt-clamp-64 md:mt-[clamp(-82px,-3vw,-20px)]">
                                     Eye Kemet
                                 </h2>
                             </div>

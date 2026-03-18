@@ -1,32 +1,30 @@
-"use client"
-import { useState } from "react"
 import Cart from '@/components/cart/Cart'
 import Link from 'next/link'
 
-function Description() {
+function Description({ details }) {
 
     return (
         <div className='flex flex-col gap-clamp-30 3xl:gap-clamp-42'>
             {/* navigation */}
-            <div className='flex gap-clamp-14 text-clamp-16 leading-[0.7] text-gray200'>
-                <Link href={"/"}>Home</Link><span>/</span><Link href={"/products"}>Products</Link><span>/</span><span className='text-light400 whitespace-nowrap'>Ring Waterdrop</span>
+            <div className='flex gap-clamp-14 text-clamp-14 3xl:text-clamp-16 leading-[0.7] text-gray200'>
+                <Link href={"/"}>Home</Link><span>/</span><Link href={"/products"}>Products</Link><span>/</span><span className='text-light400 whitespace-nowrap'>{details?.name}</span>
             </div>
 
             {/* title  */}
             <div>
-                <h3 className=' 2xl:text-clamp-64 text-light400 uppercase font-bold leading-none'>
-                    Ring Waterdrop
+                <h3 className='text-clamp-48 3xl:text-clamp-64 text-light400 uppercase font-bold leading-none'>
+                    {details?.name}
                 </h3>
             </div>
 
             {/* description  */}
             <div className='flex flex-col gap-clamp-20'>
-                <h5 className='text-light200 uppercase font-bold text-clamp-16 leading-[0.7]'>
+                <h5 className='text-light200 uppercase font-bold text-clamp-14 3xl:text-clamp-16 leading-[0.7]'>
                     Description
                 </h5>
 
-                <p className='text-clamp-16 text-gray200 leading-'>
-                    The Ring Waterdrop. A delicate dance of light and gold, this exquisite piece captures the essence of a single, perfect drop. A symbol of purity, renewal, and the quiet strength found in simplicity.
+                <p className='text-clamp-14 3xl:text-clamp-16 text-gray200 leading-'>
+                    {details?.description}
                 </p>
             </div>
 
@@ -37,26 +35,24 @@ function Description() {
                 </h5>
 
                 <div className='flex gap-clamp-24'>
-                    <p className='text-clamp-16 text-gray200 leading-'>
-                        Pure Gold
-                    </p>
-                    <p className='text-clamp-16 text-gray200 leading-'>
-                        24K
-                    </p>
-                    <p className='text-clamp-16 text-gray200 leading-'>
-                        Round
-                    </p>
+                    {
+                        details?.tags?.map((item, index) => (
+                            <p key={item+index} className='text-clamp-14 3xl:text-clamp-16 text-gray200 leading-'>
+                               {item}
+                            </p>
+                        ))
+                    }
                 </div>
             </div>
 
             {/* Ring Size */}
             <div className='flex flex-col gap-clamp-20'>
-                <h5 className='text-light200 uppercase font-bold text-clamp-16 leading-[0.7]'>
-                    Features
+                <h5 className='text-light200 uppercase font-bold text-clamp-14 3xl:text-clamp-16 leading-[0.7]'>
+                    Ring Size
                 </h5>
 
                 <div className='flex justify-between flex-wrap gap-clamp-32'>
-                    <div className='flex gap-clamp-10 flex-wrap text-balance text-clamp-16'>
+                    <div className='flex gap-clamp-10 flex-wrap text-balance text-clamp-14 3xl:text-clamp-16'>
                         <div className='p-clamp-16 bg-gold100 border border-[#BC904D] w-[44px] h-[44px] rounded-[2px] flex items-center justify-center'>
                             15
                         </div>
@@ -80,7 +76,7 @@ function Description() {
                             <path d="M10.5 1.25C10.7652 1.25 11.0195 1.35543 11.207 1.54297L14.957 5.29297C15.1446 5.48051 15.25 5.73478 15.25 6V13.75C15.25 15.4069 13.9069 16.75 12.25 16.75H5.75C4.09315 16.75 2.75 15.4069 2.75 13.75V2.25C2.75 1.69772 3.19772 1.25 3.75 1.25H10.5ZM6.75 11.75C6.19772 11.75 5.75 12.1977 5.75 12.75C5.75 13.3023 6.19772 13.75 6.75 13.75H11.25C11.8023 13.75 12.25 13.3023 12.25 12.75C12.25 12.1977 11.8023 11.75 11.25 11.75H6.75ZM6.75 8.75C6.19772 8.75 5.75 9.19772 5.75 9.75C5.75 10.3023 6.19772 10.75 6.75 10.75H11.25C11.8023 10.75 12.25 10.3023 12.25 9.75C12.25 9.19772 11.8023 8.75 11.25 8.75H6.75ZM10.75 5.75H12.5859L10.75 3.91406V5.75Z" fill="#FEFEFE" />
                         </svg>
 
-                        <h6 className='text-clamp-16 font-bold uppercase leading-[0.7] text-balance'>
+                        <h6 className='text-clamp-14 3xl:text-clamp-16 font-bold uppercase leading-[0.7] text-balance'>
                             Size Guide
                         </h6>
                     </div>
@@ -89,13 +85,13 @@ function Description() {
             </div>
 
             {/* Stock and price  */}
-            <div className='flex justify-between flex-wrap gap-clamp-24'>
-                <div className=''>
-                    <h4 className='text-light400 font-bold text-clamp-28 leading-[0.7] mb-clamp-18'>
-                        Start From:
+            <div className='flex items-center justify-between flex-wrap gap-clamp-24'>
+                <div className='flex gap-clamp-12'>
+                    <h4 className='text-light400 font-bold text-clamp-20 3xl:text-clamp-28 leading-[0.7] mb-clamp-18'>
+                        Price:
                     </h4>
                     <span className='text-gold100 text-clamp-28 font-bold uppercase leading-[0.7]'>
-                        2,800 - 5,500 EGP
+                        {details?.price} EGP
                     </span>
                 </div>
 
@@ -105,8 +101,8 @@ function Description() {
                             <path d="M20 3.00098C20.5523 3.00098 21 3.44869 21 4.00098V18.001C21 19.6578 19.6569 21.001 18 21.001H6C4.34315 21.001 3 19.6578 3 18.001V4.00098C3 3.44869 3.44772 3.00098 4 3.00098H20ZM15.707 9.29297C15.3165 8.90248 14.6835 8.90248 14.293 9.29297L11 12.5859L9.70703 11.293C9.31651 10.9025 8.68349 10.9025 8.29297 11.293C7.90245 11.6835 7.90247 12.3165 8.29297 12.707L10.293 14.707C10.6835 15.0976 11.3165 15.0976 11.707 14.707L15.707 10.707C16.0975 10.3165 16.0975 9.68348 15.707 9.29297Z" fill="#40D465" />
                         </svg>
                     </div>
-                    <p className='text-light400 text-clamp-18 leading-none'>
-                        In Stock - Ships in 1-2 Days
+                    <p className='text-light400 text-clamp-16 3xl:text-clamp-18 leading-none'>
+                        In Stock
                     </p>
                 </div>
             </div>
