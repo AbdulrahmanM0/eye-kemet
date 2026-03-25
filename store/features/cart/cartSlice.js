@@ -1,14 +1,25 @@
 import handleCart from '@/api/cart/cart';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { toast } from 'react-toastify';
 
 export const cart = createAsyncThunk(
   'cart/cart',
   async ({ formData, method }, thunkAPI) => {
     try {
       const res = await handleCart({ method, formData })
+      if (method == "add") {
+        toast.success("added successfully");
+      }
+      if (method == "remove") {
+        toast.success("removed successfully");
+      }
+      if (method == "clear") {
+        toast.success("cleared successfully");
+      }
       return res.data;
     } catch (err) {
       console.log("error", err);
+      toast.error(err.response?.data);
       return thunkAPI.rejectWithValue(err.response?.data || 'Error adding to cart');
     }
   }
@@ -41,6 +52,7 @@ const cartSlice = createSlice({
         state.loading = true
       })
       .addCase(cart.fulfilled, (state, action) => {
+        state.loading = false;
         state.cartItems = action.payload?.items;
         state.total = action.payload?.cart?.total;
         state.subTotal = action.payload?.cart?.subtotal;
@@ -48,7 +60,7 @@ const cartSlice = createSlice({
         state.discount = action.payload?.cart?.discount;
       })
       .addCase(cart.rejected, (state, action) => {
-        // state.loading = false
+        state.loading = false
         // state.error = action.payload
       })
   },

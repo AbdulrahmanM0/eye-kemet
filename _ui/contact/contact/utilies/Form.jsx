@@ -1,5 +1,11 @@
+"use client"
+function ContactForm({ contactForm }) {
+    console.log(contactForm, "contactForm")
 
-function ContactForm() {
+    // resort fields
+    const sortedForm = [...(contactForm || [])].sort(
+        (a, b) => a.sort_order - b.sort_order
+    );
     return (
         <section className='grid grid-cols-1 sm:grid-cols-2 gap-clamp-40'>
             {/* form head  */}
@@ -15,10 +21,14 @@ function ContactForm() {
 
             {/* form  */}
             <form action="" className="sm:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-clamp-24">
-                <div>
-                    <input className='input' placeholder='Full name *' type="text" />
-                </div>
-                <div>
+                {
+                    sortedForm?.map((item, index) => (
+                        <div key={index + item?.id} className={index === contactForm.length - 1 ? "sm:col-span-2" : ""}>
+                            <input className='input' placeholder={`${item.placeholder} ${item.is_required && "*"}`} type={item.field_type} />
+                        </div>
+                    ))
+                }
+                {/* <div>
                     <input className='input' placeholder='Enter email *' type="text" />
                 </div>
                 <div>
@@ -31,7 +41,7 @@ function ContactForm() {
                     <textarea className='input' name="" id="" cols="30" rows="10" placeholder="Enter your message *">
 
                     </textarea>
-                </div>
+                </div> */}
 
                 {/* submit btn  */}
                 <div>

@@ -2,7 +2,7 @@ import ShareLinks from '@/components/items/links/ShareLinks'
 import Conclusion from '../conclusion/Conclusion'
 import Pragraph from './utilies/Pragraph'
 
-function ContentEnd() {
+function ContentEnd({data}) {
     const p = {
         title: "Decoding the Enigma:",
         body: [
@@ -15,7 +15,7 @@ function ContentEnd() {
         <section className='pb-clamp-100'>
             <div className='flex flex-col gap-clamp-64 w-[clamp(320px,59.375vw,1140px)] mx-auto pb-clamp-20'>
                 <Pragraph {...p} />
-                <Conclusion />
+                <Conclusion data={data}/>
                 <ShareLinks title={"Share Via :"}/>
             </div>
         </section>

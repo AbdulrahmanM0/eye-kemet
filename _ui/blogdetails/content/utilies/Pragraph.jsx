@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Pragraph({ title, body }) {
+function Pragraph({ title, content }) {
     return (
         <div className='flex flex-col gap-clamp-24'>
             {/* title  */}
@@ -9,13 +9,16 @@ function Pragraph({ title, body }) {
             </h3>
 
             {/* paragraphs  */}
-            <div className='flex flex-col gap-clamp-30'>
-                {body.map((item, index) => (
+            <div
+                className="flex flex-col gap-clamp-30 text-gray200 text-clamp-18"
+                dangerouslySetInnerHTML={{ __html: content || "" }}
+            />
+            {/* {body.map((item, index) => (
                     <p key={index + item[0]} className='text-gray200 text-clamp-18'>
                         {item}
                     </p>
-                ))}
-            </div>
+                ))} */}
+
         </div>
     )
 }

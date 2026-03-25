@@ -1,4 +1,3 @@
-import { categoris } from "@/data/categories"
 import Card from "./utilies/Card"
 import handleCategories from "@/api/home/Categories"
 async function Categories() {

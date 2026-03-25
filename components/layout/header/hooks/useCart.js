@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 
 function useCart() {
-    const { cartItems, subTotal, total, discount } = useSelector((state) => state.cartReducer);
+    const { cartItems, subTotal, total, discount , loading } = useSelector((state) => state.cartReducer);
     const [capaigns, setCampaigns] = useState([])
 
     const dispatch = useDispatch();
@@ -19,7 +19,6 @@ function useCart() {
             quantity: 1,
         }
         dispatch(cart({ method: "get", formData }))
-
 
         // deliver data 
         async function getComapigns() {
@@ -48,7 +47,7 @@ function useCart() {
     }
 
     return {
-        handleCartToggle, cartItems, subTotal, total, discount, handleRemoveItem, handleUpdateItem, handleClearCart, capaigns
+        handleCartToggle, cartItems, subTotal, total, discount, handleRemoveItem, handleUpdateItem, handleClearCart, capaigns , loading
     }
 }
 

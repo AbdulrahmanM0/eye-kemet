@@ -30,7 +30,7 @@ function Footer() {
             links: [
                 {
                     label: "Supports",
-                    src: "/contact"
+                    src: "/support"
                 },
                 {
                     label: "Privacy Policy",

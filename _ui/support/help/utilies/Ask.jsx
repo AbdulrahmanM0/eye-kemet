@@ -32,7 +32,7 @@ function Ask() {
                     </p>
 
 
-                    <button
+                    {/* <button
                         className="w-full sm:w-fit bg-gold100 flex items-center justify-center gap-clamp-10 px-clamp-28 py-clamp-16 text-clamp-18 font-bold text-balance uppercase rounded-[2px]"
                     >
                         Send your question
@@ -47,11 +47,11 @@ function Ask() {
                                 fill="#FEFEFE"
                             />
                         </svg>
-                    </button>
-
+                    </button> */}
+{/* 
                     <p className="text-gray200 text-clamp-16">
                         Or contact us through
-                    </p>
+                    </p> */}
 
 
                     <div className='flex flex-col gap-clamp-20'>

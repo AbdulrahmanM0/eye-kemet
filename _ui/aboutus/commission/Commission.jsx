@@ -3,7 +3,7 @@ import React from 'react'
 function Commission() {
     return (
         <section>
-            <div className='relative bg-wd600 flex flex-col items-center'>
+            <div className='relative bg-wd600 flex flex-col items-center overflow-hidden'>
                 {/* screen  */}
                 <div data-aos="fade-down" className='absolute z-10 w-full h-full top-0 left-0'>
                     <svg className='w-full h-full' xmlns="http://www.w3.org/2000/svg" width="1920" height="940" viewBox="0 0 1920 940" fill="none">

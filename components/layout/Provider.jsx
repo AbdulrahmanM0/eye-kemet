@@ -25,7 +25,7 @@ function ProviderContainer({ children, customer }) {
         <Header {...customer}/>
         {children}
         <Footer />
-        <ToastContainer theme="dark" />
+        <ToastContainer theme="dark" position="bottom-right" draggable />
         <Cart />
       </Provider>
     </div>

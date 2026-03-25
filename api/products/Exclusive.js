@@ -11,7 +11,7 @@ export default async function handleProducts(params = {}) {
       `functions/v1/get-category-products?tenant_id=${process.env.TENANT_ID}&${queryString}`
     );
 
-    console.log("Success! Response:", res.data); 
+    console.log(res.data,"productscame"); 
     return res.data;
   } catch (error) {
     console.error("Request failed:", error?.response?.data || error.message);

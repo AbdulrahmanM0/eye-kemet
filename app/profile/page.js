@@ -1,13 +1,10 @@
-import FilterSection from "@/_ui/profile/Filter/FilterSection";
-import Hero from "@/_ui/profile/hero/Hero";
-import PersonalForm from "@/_ui/profile/personalinfo/utilies/PersonalForm";
+import PersonalForm from "@/_ui/profile/content/personalinfo/utilies/PersonalForm";
+import handleProfile from "@/api/proflie/Profile";
 
-export default function Blogs() {
+export default async function Profile() {
+  const profile = await handleProfile();
+
   return (
-    <div>
-      <Hero />
-      <FilterSection />
-      <PersonalForm />
-    </div>
+    <PersonalForm profile={profile?.customer} />
   );
 }

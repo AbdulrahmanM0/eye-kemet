@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-function Card() {
+function Card({ author_name, author_avatar_url }) {
     return (
         <div className='p-clamp-48 bg-wd600 w-[clamp(320px,59.375vw,1140px)] mx-auto relative'>
             <div className='flex flex-col gap-clamp-30'>
@@ -20,12 +20,13 @@ function Card() {
 
                 {/* auther */}
                 <div className='flex gap-clamp-20'>
-                    <Image src="/images/user/user.png" className="rounded-full " width={52} height={52} alt="auther" />
-
+                    {author_avatar_url &&
+                        <Image src="/images/user/user.png" className="rounded-full " width={52} height={52} alt="auther" />
+                    }
                     {/* auther data  */}
                     <div className='flex flex-col gap-clamp-14 justify-center'>
                         <h6 className='leading-[0.7] text-balance text-clamp-18 '>
-                            Miguel Cartwright
+                            {author_name}
                         </h6>
                         <p className='leading-[0.7] text-clamp-16 text-gray200'>
                             Partner

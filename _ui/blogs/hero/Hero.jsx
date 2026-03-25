@@ -1,6 +1,6 @@
 import SectionHead from '@/components/sections/SectionHead'
 
-function Hero() {
+function Hero({slug,title}) {
     const data = {
         pagination: [
             {
@@ -9,10 +9,10 @@ function Hero() {
             },
             {
                 title: "Blog Details",
-                link: "/blogs/anyblogid"
+                link: `/blogs/${slug}`
             }
         ],
-        title: "What to Do If You Don’t Have a Clear Picture of Someone’s Eye"
+        title
     }
     return (
         <>

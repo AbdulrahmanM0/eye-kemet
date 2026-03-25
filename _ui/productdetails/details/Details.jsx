@@ -2,8 +2,7 @@ import ProductImgs from './utilies/ProductImgs'
 import Description from './utilies/Description'
 import TabsDetails from './utilies/TabsDetails'
 
-function Details({data}) {
-  console.log(data,"productee")
+function Details({data,product}) {
   return (
     <section>
       <div className='sm:px-clamp-100 py-clamp-100 bg-full'>
@@ -17,7 +16,7 @@ function Details({data}) {
           {/* cols 2  */}
           <div className='py-clamp-100'>
             <div className='p-clamp-64 sticky top-[var(--header-height)]'>
-              <Description details={data?.data[0]}/>
+              <Description details={data?.data[0]} product={product}/>
             </div>
           </div>
 

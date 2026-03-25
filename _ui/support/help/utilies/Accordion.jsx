@@ -36,39 +36,39 @@ const AccordionItem = ({ title, children, isOpen, onClick }) => (
     </div>
 );
 
-export default function Accordion() {
+export default function Accordion({faqs}) {
     const [openIndex, setOpenIndex] = useState(0);
 
     const toggleIndex = (index) => {
         setOpenIndex(openIndex === index ? null : index);
     };
 
-    const faqs = [
-        {
-            title: "HOW DO I CREATE AN ACCOUNT?",
-            content:
-                "Lorem ipsum dolor sit amet consectetur. Nullam vitae id cras diam praesent. Varius in velit venenatis consectetur tristique ipsum risus metus etiam. Erat dui vel dolor ut. Nec quam consequat malesuada consequat aliquet pretium.",
-        },
-        {
-            title: "WHAT ARE THE BENEFITS OF HAVING AN ACCOUNT?",
-            content: "You get access to exclusive content, faster checkout, and more benefits.",
-        },
-        {
-            title: "WHAT SHOULD I DO IF I FORGET MY USERNAME?",
-            content: "You can reset your username using the 'Forgot Username' option on the login page.",
-        },
-    ];
+    // const faqs = [
+    //     {
+    //         title: "HOW DO I CREATE AN ACCOUNT?",
+    //         content:
+    //             "Lorem ipsum dolor sit amet consectetur. Nullam vitae id cras diam praesent. Varius in velit venenatis consectetur tristique ipsum risus metus etiam. Erat dui vel dolor ut. Nec quam consequat malesuada consequat aliquet pretium.",
+    //     },
+    //     {
+    //         title: "WHAT ARE THE BENEFITS OF HAVING AN ACCOUNT?",
+    //         content: "You get access to exclusive content, faster checkout, and more benefits.",
+    //     },
+    //     {
+    //         title: "WHAT SHOULD I DO IF I FORGET MY USERNAME?",
+    //         content: "You can reset your username using the 'Forgot Username' option on the login page.",
+    //     },
+    // ];
 
     return (
         <div className="bg-full rounded-lg overflow-hidden">
             {faqs.map((faq, index) => (
                 <AccordionItem
                     key={index}
-                    title={faq.title}
+                    title={faq.question}
                     isOpen={openIndex === index}
                     onClick={() => toggleIndex(index)}
                 >
-                    {faq.content}
+                    {faq.answer}
                 </AccordionItem>
             ))}
         </div>

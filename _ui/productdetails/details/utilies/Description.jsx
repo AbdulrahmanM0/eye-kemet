@@ -1,7 +1,10 @@
-import Cart from '@/components/cart/Cart'
+"use client"
+import useProduct from '@/components/cards/hooks/useProduct';
 import Link from 'next/link'
 
-function Description({ details }) {
+function Description({ details, product }) {
+    console.log(details?.modifiers, "path")
+    const { handleAddToCart, loading } = useProduct();
 
     return (
         <div className='flex flex-col gap-clamp-30 3xl:gap-clamp-42'>
@@ -37,8 +40,8 @@ function Description({ details }) {
                 <div className='flex gap-clamp-24'>
                     {
                         details?.tags?.map((item, index) => (
-                            <p key={item+index} className='text-clamp-14 3xl:text-clamp-16 text-gray200 leading-'>
-                               {item}
+                            <p key={item + index} className='text-clamp-14 3xl:text-clamp-16 text-gray200 leading-'>
+                                {item}
                             </p>
                         ))
                     }
@@ -46,18 +49,21 @@ function Description({ details }) {
             </div>
 
             {/* Ring Size */}
-            <div className='flex flex-col gap-clamp-20'>
-                <h5 className='text-light200 uppercase font-bold text-clamp-14 3xl:text-clamp-16 leading-[0.7]'>
-                    Ring Size
-                </h5>
+            {details?.modifiers?.length > 0 &&
+                <div className='flex flex-col gap-clamp-20'>
+                    <h5 className='text-light200 uppercase font-bold text-clamp-14 3xl:text-clamp-16 leading-[0.7]'>
+                        Ring Size
+                    </h5>
 
-                <div className='flex justify-between flex-wrap gap-clamp-32'>
-                    <div className='flex gap-clamp-10 flex-wrap text-balance text-clamp-14 3xl:text-clamp-16'>
-                        <div className='p-clamp-16 bg-gold100 border border-[#BC904D] w-[44px] h-[44px] rounded-[2px] flex items-center justify-center'>
-                            15
-                        </div>
+                    <div className='flex justify-between flex-wrap gap-clamp-32'>
+                        <div className='flex gap-clamp-10 flex-wrap text-balance text-clamp-14 3xl:text-clamp-16'>
+                            {details?.modifiers.map((item, index) => (
+                                <div className='p-clamp-16 bg-gold100 border border-[#BC904D] w-[44px] h-[44px] rounded-[2px] flex items-center justify-center'>
+                                    15
+                                </div>
+                            ))}
 
-                        <div className='p-clamp-16 border border-gray400 w-[44px] h-[44px] rounded-[2px] flex items-center justify-center'>
+                            {/* <div className='p-clamp-16 border border-gray400 w-[44px] h-[44px] rounded-[2px] flex items-center justify-center'>
                             20
                         </div>
 
@@ -67,22 +73,23 @@ function Description({ details }) {
 
                         <div className='p-clamp-16 border border-gray400  w-[44px] h-[44px] rounded-[2px] flex items-center justify-center'>
                             40
+                        </div> */}
+
+                        </div>
+
+                        <div className='px-clamp-24 py-clamp-12 gap-clamp-10 flex border border-gold100 rounded-[2px] h-fit flex- items-center mt-auto'>
+                            <svg xmlns="http://www.w3.org/2000/svg" className='w-clamp-16 h-clamp-16' width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                <path d="M10.5 1.25C10.7652 1.25 11.0195 1.35543 11.207 1.54297L14.957 5.29297C15.1446 5.48051 15.25 5.73478 15.25 6V13.75C15.25 15.4069 13.9069 16.75 12.25 16.75H5.75C4.09315 16.75 2.75 15.4069 2.75 13.75V2.25C2.75 1.69772 3.19772 1.25 3.75 1.25H10.5ZM6.75 11.75C6.19772 11.75 5.75 12.1977 5.75 12.75C5.75 13.3023 6.19772 13.75 6.75 13.75H11.25C11.8023 13.75 12.25 13.3023 12.25 12.75C12.25 12.1977 11.8023 11.75 11.25 11.75H6.75ZM6.75 8.75C6.19772 8.75 5.75 9.19772 5.75 9.75C5.75 10.3023 6.19772 10.75 6.75 10.75H11.25C11.8023 10.75 12.25 10.3023 12.25 9.75C12.25 9.19772 11.8023 8.75 11.25 8.75H6.75ZM10.75 5.75H12.5859L10.75 3.91406V5.75Z" fill="#FEFEFE" />
+                            </svg>
+
+                            <h6 className='text-clamp-14 3xl:text-clamp-16 font-bold uppercase leading-[0.7] text-balance'>
+                                Size Guide
+                            </h6>
                         </div>
 
                     </div>
-
-                    <div className='px-clamp-24 py-clamp-12 gap-clamp-10 flex border border-gold100 rounded-[2px] h-fit flex- items-center mt-auto'>
-                        <svg xmlns="http://www.w3.org/2000/svg" className='w-clamp-16 h-clamp-16' width="18" height="18" viewBox="0 0 18 18" fill="none">
-                            <path d="M10.5 1.25C10.7652 1.25 11.0195 1.35543 11.207 1.54297L14.957 5.29297C15.1446 5.48051 15.25 5.73478 15.25 6V13.75C15.25 15.4069 13.9069 16.75 12.25 16.75H5.75C4.09315 16.75 2.75 15.4069 2.75 13.75V2.25C2.75 1.69772 3.19772 1.25 3.75 1.25H10.5ZM6.75 11.75C6.19772 11.75 5.75 12.1977 5.75 12.75C5.75 13.3023 6.19772 13.75 6.75 13.75H11.25C11.8023 13.75 12.25 13.3023 12.25 12.75C12.25 12.1977 11.8023 11.75 11.25 11.75H6.75ZM6.75 8.75C6.19772 8.75 5.75 9.19772 5.75 9.75C5.75 10.3023 6.19772 10.75 6.75 10.75H11.25C11.8023 10.75 12.25 10.3023 12.25 9.75C12.25 9.19772 11.8023 8.75 11.25 8.75H6.75ZM10.75 5.75H12.5859L10.75 3.91406V5.75Z" fill="#FEFEFE" />
-                        </svg>
-
-                        <h6 className='text-clamp-14 3xl:text-clamp-16 font-bold uppercase leading-[0.7] text-balance'>
-                            Size Guide
-                        </h6>
-                    </div>
-
                 </div>
-            </div>
+            }
 
             {/* Stock and price  */}
             <div className='flex items-center justify-between flex-wrap gap-clamp-24'>
@@ -110,12 +117,30 @@ function Description({ details }) {
             {/* add btn  */}
             <div>
                 <button
-                    // onClick={() => setOpenCart(true)}
+                    disabled={loading}
+                    onClick={(e) => {
+                        if (loading) return;
+                        e.preventDefault();
+                        e.stopPropagation();
+                        handleAddToCart(product);
+                    }}
                     className="secondary-btn px-clamp-28 py-clamp-16"
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M8.50977 19C9.33819 19 10.0098 19.6716 10.0098 20.5V20.5098C10.0098 21.3382 9.33819 22.0098 8.50977 22.0098H8.5C7.67157 22.0098 7 21.3382 7 20.5098V20.5C7 19.6716 7.67157 19 8.5 19H8.50977ZM17.5098 19C18.3382 19 19.0098 19.6716 19.0098 20.5V20.5098C19.0098 21.3382 18.3382 22.0098 17.5098 22.0098H17.5C16.6716 22.0098 16 21.3382 16 20.5098V20.5C16 19.6716 16.6716 19 17.5 19H17.5098ZM5 2C5.52239 2 5.95678 2.40207 5.99707 2.92285L6.15625 5H21C21.2844 5 21.5554 5.12109 21.7451 5.33301C21.9348 5.54493 22.0255 5.82768 21.9941 6.11035L21.1777 13.4551C21.0179 14.8936 19.8538 16.013 18.4102 16.1162L8.05566 16.8555C6.40951 16.9731 4.97733 15.7392 4.85059 14.0938L4.2334 6.07715L4.07422 4H3C2.44772 4 2 3.55228 2 3C2 2.44772 2.44772 2 3 2H5ZM13 8.5C12.4477 8.5 12 8.94772 12 9.5V10H11.5C10.9477 10 10.5 10.4477 10.5 11C10.5 11.5523 10.9477 12 11.5 12H12V12.5C12 13.0523 12.4477 13.5 13 13.5C13.5523 13.5 14 13.0523 14 12.5V12H14.5C15.0523 12 15.5 11.5523 15.5 11C15.5 10.4477 15.0523 10 14.5 10H14V9.5C14 8.94772 13.5523 8.5 13 8.5Z" fill="#FEFEFE" />
-                    </svg>
+                    {loading ?
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="w-clamp-24 h-clamp-24 fill-current text-balance animate-spin"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                        >
+                            <path d="M12 1.99988C17.5228 1.99988 22 6.47703 22 11.9999C22 17.5227 17.5228 21.9999 12 21.9999C6.47715 21.9999 2 17.5227 2 11.9999C2 9.98412 2.59925 8.10896 3.625 6.53894L2.29297 5.20691C2.00697 4.92091 1.92139 4.49074 2.07617 4.11707C2.23098 3.74346 2.59558 3.49988 3 3.49988H7C7.55228 3.49988 8 3.94759 8 4.49988V8.49988C8 8.90429 7.75641 9.26889 7.38281 9.42371C7.00914 9.57849 6.57897 9.49291 6.29297 9.20691L5.07715 7.99109C4.39285 9.17015 4 10.5387 4 11.9999C4 16.4182 7.58172 19.9999 12 19.9999C16.4183 19.9999 20 16.4182 20 11.9999C20 7.5816 16.4183 3.99988 12 3.99988C11.4477 3.99988 11 3.55216 11 2.99988C11 2.44759 11.4477 1.99988 12 1.99988Z" />
+                        </svg>
+                        :
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M6.50977 17C7.33819 17 8.00977 17.6716 8.00977 18.5V18.5098C8.00977 19.3382 7.33819 20.0098 6.50977 20.0098H6.5C5.67157 20.0098 5 19.3382 5 18.5098V18.5C5 17.6716 5.67157 17 6.5 17H6.50977ZM15.5098 17C16.3382 17 17.0098 17.6716 17.0098 18.5V18.5098C17.0098 19.3382 16.3382 20.0098 15.5098 20.0098H15.5C14.6716 20.0098 14 19.3382 14 18.5098V18.5C14 17.6716 14.6716 17 15.5 17H15.5098ZM3 0C3.52239 0 3.95678 0.402072 3.99707 0.922852L4.15625 3H19C19.2844 3 19.5554 3.12109 19.7451 3.33301C19.9348 3.54493 20.0255 3.82768 19.9941 4.11035L19.1777 11.4551C19.0179 12.8936 17.8538 14.013 16.4102 14.1162L6.05566 14.8555C4.40951 14.9731 2.97733 13.7392 2.85059 12.0938L2.2334 4.07715L2.07422 2H1C0.447715 2 0 1.55228 0 1C0 0.447715 0.447715 0 1 0H3ZM11 6.5C10.4477 6.5 10 6.94772 10 7.5V8H9.5C8.94771 8 8.5 8.44771 8.5 9C8.5 9.55229 8.94771 10 9.5 10H10V10.5C10 11.0523 10.4477 11.5 11 11.5C11.5523 11.5 12 11.0523 12 10.5V10H12.5C13.0523 10 13.5 9.55229 13.5 9C13.5 8.44771 13.0523 8 12.5 8H12V7.5C12 6.94772 11.5523 6.5 11 6.5Z" fill="#FEFEFE" />
+                        </svg>
+                    }
                     Add to cart
                 </button>
             </div>

@@ -14,8 +14,8 @@ function Head() {
                 Search our help library
             </p>
 
-            <div className="w-full max-w-[59.06%] relative">
-                {/* icon */}
+            {/* search input  */}
+            {/* <div className="w-full max-w-[59.06%] relative">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
@@ -30,8 +30,6 @@ function Head() {
                         d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"
                     />
                 </svg>
-
-                {/* input */}
                 <input
                     type="text"
                     placeholder="What are you looking for?"
@@ -50,7 +48,7 @@ function Head() {
                         transition-colors
                         "
                 />
-            </div>
+            </div> */}
         </div>
     )
 }

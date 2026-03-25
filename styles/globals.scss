@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import "./typography.scss";
+@import "react-phone-input-2/lib/style.css";
 @import "./main.scss";
 
 @layer utilities {
@@ -26,12 +27,10 @@
     @apply border border-gray400  focus:ring-2 focus:ring-gold100 focus:outline-none text-balance px-clamp-16 py-clamp-20 rounded-[2px] bg-wd700 text-clamp-16 leading-[0.7] placeholder-gray200 w-full;
   }
 
-  .secondary-btn{
-    @apply bg-gold100 flex gap-clamp-10 py-clamp-12 px-clamp-24 text-clamp-16 font-bold text-balance uppercase leading-[0.7] rounded-[2px] w-full text-center justify-center items-center
+  .secondary-btn {
+    @apply bg-gold100 flex gap-clamp-10 py-clamp-12 px-clamp-24 text-clamp-16 font-bold text-balance uppercase leading-[0.7] rounded-[2px] w-full text-center justify-center items-center disabled:opacity-80;
   }
 }
-
-
 
 @layer base {
   :root {

@@ -2,8 +2,9 @@ import PrimaryBtn from '@/components/btn/Primary'
 import Blog from '@/components/cards/Blog'
 import { blogs } from '@/data/blogs'
 import Swipper from '@/components/swiper/products/Swipper'
+import Link from 'next/link'
 
-function Related({title,slogan}) {
+function Related({title,slogan,related_posts}) {
     
     return (
         <section>
@@ -20,14 +21,14 @@ function Related({title,slogan}) {
                         </p>
                     </div>
 
-                    <div>
+                    <Link href={"/products"} className='w-fit'>
                         <PrimaryBtn />
-                    </div>
+                    </Link>
                 </div>
 
                 {/* swiper  */}
                 <div>
-                    <Swipper content={blogs.map((item,index) => (<Blog key={item.title + index} {...item} />))}/>
+                    <Swipper content={related_posts?.map((item,index) => (<Blog key={item.name + index} {...item} />))}/>
                 </div>
             </div>
         </section>

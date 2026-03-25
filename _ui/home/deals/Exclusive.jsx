@@ -2,6 +2,7 @@ import handleProducts from '@/api/products/Exclusive';
 import PrimaryBtn from '@/components/btn/Primary'
 import Product from '@/components/cards/Product'
 import Swipper from '@/components/swiper/products/Swipper'
+import Link from 'next/link';
 // import { products } from '@/data/products'
 async function Exclusive({ title, slogan }) {
    
@@ -14,7 +15,6 @@ async function Exclusive({ title, slogan }) {
             is_featured: true
         }
     );
-    console.log(deals, "dealssss")
 
     return (
         <section>
@@ -31,9 +31,9 @@ async function Exclusive({ title, slogan }) {
                         </p>
                     </div>
 
-                    <div data-aos="fade-up" data-aos-duration="1000">
+                    <Link href={"/products"} data-aos="fade-up" data-aos-duration="1000">
                         <PrimaryBtn />
-                    </div>
+                    </Link>
                 </div>
 
                 {/* swiper  */}

@@ -1,10 +1,11 @@
 import SectionHead from '@/components/sections/SectionHead'
+import Head from './utilies/Head'
 
-function Hero() {
+function Hero({profile}) {
     const data = {
         pagination: [
             {
-                title: "My Profile",
+                title: profile?.name,
                 link: "/profile"
             },
         ],
@@ -13,7 +14,9 @@ function Hero() {
     }
     return (
         <>
-            <SectionHead data={data} />
+            <SectionHead data={data}>
+                <Head profile={profile}/>
+            </SectionHead>
         </>
     )
 }

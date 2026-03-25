@@ -13,7 +13,7 @@ function Product({ name, price, image_url, type, views, gold, category_name, is_
             setMargin(divRef.current.offsetHeight);
         }
     }, []);
-    const { handleAddToCart } = useProduct({ customer_id });
+    const { handleAddToCart, loading } = useProduct({ customer_id });
 
     return (
         <Link href={`/products/${id}`} data-aos="fade-down" className='flex flex-col h-[clamp(200px,62.22vh,672px)] bg-full group hover:bg-wd600 border border-gray400 relative'>
@@ -81,8 +81,16 @@ function Product({ name, price, image_url, type, views, gold, category_name, is_
                         {is_available ? "In Stock" : "Out Of Stock "}
                     </div>
 
-                    <div onClick={(e) => { e.stopPropagation(); handleAddToCart(id) }} className='w-full'>
-                        <Secondary />
+                    <div
+                        onClick={(e) => {
+                            if(loading) return;
+                            e.preventDefault();
+                            e.stopPropagation();
+                            handleAddToCart(id);
+                        }}
+                        className="w-full"
+                    >
+                        <Secondary state={loading} />
                     </div>
                 </div>
             </div>

@@ -1,5 +1,4 @@
 "use client";
-import "react-phone-input-2/lib/style.css";
 import SigninBTN from "./SigninBTN";
 import UseSubmit from "../hooks/UseSubmit";
 import PhoneInput from "./PhoneInput";

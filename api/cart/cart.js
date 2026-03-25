@@ -14,15 +14,12 @@ export default async function handleCart({ method = "get", formData = {} }) {
     tenant_id: process.env.TENANT_ID,
   };
 
-
   try {
     
     const res = await axiosInstance.post(
       `functions/v1/cart/${method}`,
       body
     );
-
-    console.log("Response:", res.data);
 
     return {
       data: res.data,

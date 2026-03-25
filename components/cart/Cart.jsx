@@ -19,9 +19,7 @@ import Product from "./utilies/Product"
 export default function Cart() {
     const { open } = useSelector((state) => state.cartReducer)
     const { handlePicture, openPictureDialog, handleImageDialog, openDialog, uploadperformance } = useUploadImage();
-    const { handleCartToggle, cartItems, subTotal, total, discount, handleClearCart, handleRemoveItem, handleUpdateItem, capaigns } = useCart();
-    console.log("capaigns",capaigns)
-
+    const { handleCartToggle, cartItems, subTotal, total, discount, handleClearCart, handleRemoveItem, handleUpdateItem, capaigns , loading} = useCart();
 
     return (
         <Drawer open={open} direction="right">
@@ -106,7 +104,7 @@ export default function Cart() {
                         </p>
                     ) : (
                         cartItems?.map((item) => (
-                            <Product {...item} key={item?.id} handleRemoveItem={handleRemoveItem} handleUpdateItem={handleUpdateItem} />
+                            <Product {...item} loading={loading} key={item?.id} handleRemoveItem={handleRemoveItem} handleUpdateItem={handleUpdateItem} />
                         ))
                     )}
                 </div>

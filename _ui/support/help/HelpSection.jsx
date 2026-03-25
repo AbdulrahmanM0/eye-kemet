@@ -2,7 +2,9 @@ import Accordion from "./utilies/Accordion"
 import Ask from "./utilies/Ask"
 import Head from "./utilies/Head"
 
-function HelpSection() {
+function HelpSection({faq}) {
+    const faqs = faq?.faqs;
+    
     return (
         <section>
             <div className='px-clamp-100 bg-full'>
@@ -11,7 +13,7 @@ function HelpSection() {
                     {/* cols 1  */}
                     <div className='py-clamp-100 flex-1 flex flex-col gap-clamp-36'>
                         <Head />
-                        <Accordion/>
+                        <Accordion faqs={faqs}/>
                     </div>
 
                     {/* cols 2 */}

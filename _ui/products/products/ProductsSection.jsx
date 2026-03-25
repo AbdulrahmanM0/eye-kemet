@@ -2,6 +2,7 @@ import Product from '@/components/cards/Product'
 import Loadmore from './utilies/Loadmore'
 
 async function ProductsSection({deals}) {
+    console.log(deals,"dealsdealss")
 
     return (
         <section>
@@ -14,7 +15,7 @@ async function ProductsSection({deals}) {
 
                 {/* load more  */}
                 <div className='pb-clamp-100'>
-                    <Loadmore />
+                    <Loadmore deals={deals}/>
                 </div>
             </div>
         </section>

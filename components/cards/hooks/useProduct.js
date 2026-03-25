@@ -1,8 +1,10 @@
+"use client"
 import { cart } from "@/store/features/cart/cartSlice";
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 function useProduct() {
     const dispatch = useDispatch();
+    const {loading} = useSelector(state => state?.cartReducer);
 
     const handleAddToCart = async (id) => {
         const formData = {
@@ -11,7 +13,7 @@ function useProduct() {
         }
         await  dispatch(cart({method: "add", formData }))
     }
-    return {handleAddToCart}
+    return {handleAddToCart,loading}
 }
 
 export default useProduct

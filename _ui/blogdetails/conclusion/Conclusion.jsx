@@ -1,10 +1,10 @@
 import React from 'react'
 import Card from './utilies/Card'
 
-function Conclusion() {
+function Conclusion({data}) {
   return (
     <section>
-        <Card />
+        <Card {...data}/>
     </section>
   )
 }

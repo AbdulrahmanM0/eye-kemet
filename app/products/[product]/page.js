@@ -10,10 +10,9 @@ async function Product({ params }) {
     title: "You May also like",
     slogan: "Explore our best accessories products ",
   }
-  console.log("zeft",data)
   return (
     <div>
-      <Details data={data}/>
+      <Details data={data} product={product}/>
       <Exclusive {...productsSlides} />
     </div>
   )

@@ -14,7 +14,7 @@ export default function Home() {
     slogan: "Explore our best accessories products ",
   }
   return (
-    <div>
+    <div className="overflow-hidden">
       <Hero />
       <Exclusive {...productsSlides}/>
       <Categories />

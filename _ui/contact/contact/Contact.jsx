@@ -3,7 +3,7 @@ import React from 'react'
 import ContactForm from './utilies/Form'
 import Details from './utilies/Details'
 
-function Contact() {
+function Contact({ contactForm }) {
     const data = {
         pagination: [
             {
@@ -34,10 +34,10 @@ function Contact() {
                 {/* contact data & form */}
                 <div className='px-clamp-100 grid grid-cols-2'>
                     <Details />
-                    <ContactForm />
+                    <ContactForm contactForm={contactForm?.fields}/>
                 </div>
 
-                
+
             </div>
         </section>
     )

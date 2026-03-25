@@ -1,11 +1,10 @@
-import DropFilter from './utilies/Dropdowen'
 import { filters, sort } from '@/data/filters'
-import handleCategories from '@/api/home/Categories'
 import SortDropdown from './utilies/SortDropdowen';
+import FilterDrawer from './utilies/Filter';
+import handleFilter from '@/api/products/Filter';
 
 async function FilterSection({deals}) {
-    const categories_products = await handleCategories();
-    console.log("categories_products", deals.filters[0])
+    const filter_products = await handleFilter();
 
     return (
         <section>
@@ -16,13 +15,16 @@ async function FilterSection({deals}) {
                         <div className='text-light200 text-clamp-16 leading-[0.7] whitespace-nowrap'>
                             Filter by :
                         </div>
+                        <div>
+                            <FilterDrawer filter_products={filter_products}/>
+                        </div>
 
                         {/* dropdowens  */}
-                        {filters.map((item, index) => (
+                        {/* {filters.map((item, index) => (
                             <div key={item.title + index}>
                                 <DropFilter {...item} type="filter"/>
                             </div>
-                        ))}
+                        ))} */}
                     </div>
 
                     {/* sort  */}
@@ -35,13 +37,14 @@ async function FilterSection({deals}) {
                         <div>
                             <SortDropdown {...sort} />
                         </div>
+
                     </div>
                 </div>
             </div>
 
             {/* count items  */}
             <div className='text-clamp-18 leading-[0.7] text-gray200 p-clamp-40 bg-full'>
-                158 items found
+                {deals?.pagination?.total_count || "0"} found
             </div>
         </section>
     )
