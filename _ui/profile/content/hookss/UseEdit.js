@@ -5,6 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 import handleUpdateProfile from "@/api/proflie/UpdateProfile";
+import { useRouter } from "next/navigation";
+import { setSession } from "@/_ui/otp/hooks/setSession";
 
 const schema = z.object({
     name: z.string().min(1, "Name is required"),
@@ -14,6 +16,7 @@ const schema = z.object({
 });
 
 function UseEdit(props) {
+    const router = useRouter();
     
     const {
         register,
@@ -33,19 +36,18 @@ function UseEdit(props) {
         },
     });
 
-
     const onSubmit = async (data) => {
         try {
             const res = await handleUpdateProfile(data);
             if (res?.error) {
-                console.log("thiss is sthe rerror", res.error)
                 toast.error(res.error);
             } else {
+                console.log("testssdsfsd" , res)
+                setSession({customer: res?.customer });
+                router.refresh();
                 toast.success("Profile updated successfully!");
             }
         } catch (err) {
-            console.log("thiss is sthe rerror", err)
-
             toast.error(err.message || "Something went wrong");
         }
     };

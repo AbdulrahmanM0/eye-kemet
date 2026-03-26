@@ -5,7 +5,7 @@ function Phone({ control }) {
     return (
         <Controller
             name="phone"
-            control={control}
+            // control={control}
             rules={{ required: "Phone is required" }}
             classame="input"
             render={({ field }) => (

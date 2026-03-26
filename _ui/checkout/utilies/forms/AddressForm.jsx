@@ -1,6 +1,17 @@
 import React from 'react'
 
-function AddressForm() {
+function ErrorMsg({ message }) {
+    if (!message) return null;
+    return (
+        <p className="text-red100 text-clamp-12 mt-1 flex items-center gap-1 animate-[slideDown_0.25s_ease-out] [@keyframes_slideDown]{0%{transform:translateY(-10px);opacity:0}100%{transform:translateY(0);opacity:1}}">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M18 10c0 4.418-3.582 8-8 8S2 14.418 2 10 5.582 2 10 2s8 3.582 8 8zm-8-3a1 1 0 00-1 1v2a1 1 0 002 0V8a1 1 0 00-1-1zm0 6a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
+            </svg>
+            {message}
+        </p>
+    );
+}
+function AddressForm({ register,errors }) {
     return (
         <section className='grid grid-cols-1 sm:grid-cols-2 gap-clamp-20'>
             <div className="sm:col-span-2 flex flex-col gap-clamp-24">
@@ -14,7 +25,10 @@ function AddressForm() {
 
             {/* label  */}
             <div className='sm:col-span-2'>
-                <input className='input' placeholder='FLabel *' type="text" />
+                <input className='input' placeholder='Label *' type="text"
+                    {...register("name")}
+                />
+                {/* <ErrorMsg message={errors.name?.message} /> */}
             </div>
             {/* addressss  */}
             <div className='sm:col-span-2'>

@@ -19,7 +19,7 @@ function SavedAddress({ address }) {
             </div>
 
             <div data-aos="fade-up" className="flex flex-col gap-clamp-40">
-                {address?.data && address?.data?.map((item, index) => (
+                {address?.data && address?.data?.length > 0 && address?.data?.map((item, index) => (
                     <Address key={item?.id} {...item}/>
                 ))}
             </div>

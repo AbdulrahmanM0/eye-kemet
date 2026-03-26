@@ -1,8 +1,12 @@
+"use client"
 import PrimaryBtn from "@/components/btn/Primary"
+import { useSelector } from "react-redux";
 
-function PaymentSummary() {
+function PaymentSummary({ disable }) {
+    const { cartItems, subTotal, total, discount, shipping } = useSelector((state) => state.cartReducer);
+
     return (
-        <section className="sticky top-0">
+        <section className="sticky top-[var(--header-height)]">
             <div className="p-clamp-48 bg-wd500">
                 {/* Payment Summary */}
                 <div className="flex flex-col gap-clamp-32 ">
@@ -15,25 +19,26 @@ function PaymentSummary() {
                             Sub Total
                         </h6>
                         <h5 className="text-clamp-20 uppercase font-bold text-light400 leading-[0.7] ">
-                            EGP 2,800
+                            EGP {subTotal}
                         </h5>
                     </div>
-                    <div className="flex justify-between gap-clamp-24">
+
+                    <div className={`flex justify-between gap-clamp-24`}>
                         <h6 className="text-clamp-18 text-gray200 leading-[0.7] ">
                             Shipping
                         </h6>
                         <h5 className="text-clamp-20 uppercase font-bold text-light400 leading-[0.7] ">
-                            EGP 200
+                            EGP {shipping}
                         </h5>
                     </div>
 
                     {/* discount  */}
-                    <div className="flex justify-between gap-clamp-24 text-green100">
-                        <h6 className="text-clamp-18 text-gray200 leading-[0.7] ">
+                    <div className={`flex justify-between gap-clamp-24 `}>
+                        <h6 className="text-clamp-18 text-green100 leading-[0.7] ">
                             Discount
                         </h6>
-                        <h5 className="text-clamp-20 uppercase font-bold text-light400 leading-[0.7] " >
-                            -EGP 100
+                        <h5 className="text-clamp-20 uppercase font-bold leading-[0.7] text-green100 " >
+                            -EGP {discount}
                         </h5>
                     </div>
 
@@ -43,7 +48,7 @@ function PaymentSummary() {
                             Grand Total
                         </h6>
                         <h5 className="text-clamp-20 uppercase font-bold text-light400 leading-[0.7] ">
-                            EGP 2,900
+                            EGP {total}
                         </h5>
                     </div>
 
@@ -80,12 +85,12 @@ function PaymentSummary() {
                     </div>
 
                     {/* proceed */}
-                    <div className="bg-full">
+                    <div className="bg-full" disabled={disable}>
                         <PrimaryBtn value="Proceed to checkout" className="w-full justify-center" />
                     </div>
                     <div>
                         <p className="text-clamp-16 text-gray200 text-center">
-                            Checkout quickly and securely 
+                            Checkout quickly and securely
                         </p>
                     </div>
                 </div>

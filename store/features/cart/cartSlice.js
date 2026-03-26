@@ -8,6 +8,10 @@ export const cart = createAsyncThunk(
     try {
       const res = await handleCart({ method, formData })
       if (method == "add") {
+        if (res?.status === 401) {
+          toast.warn("Please Login First")
+          return;
+        }
         toast.success("added successfully");
       }
       if (method == "remove") {
@@ -18,8 +22,8 @@ export const cart = createAsyncThunk(
       }
       return res.data;
     } catch (err) {
-      console.log("error", err);
-      toast.error(err.response?.data);
+      console.log("zzr", err);
+      toast.error(err?.response?.data);
       return thunkAPI.rejectWithValue(err.response?.data || 'Error adding to cart');
     }
   }
@@ -34,7 +38,9 @@ const initialState = {
   shipping: 0,
   discount: 0,
   total: 0,
-  tax: 0
+  tax: 0,
+  extraction_id: '',
+  cart: {}
 }
 
 const cartSlice = createSlice({
@@ -44,6 +50,9 @@ const cartSlice = createSlice({
     toggle: (state) => {
       state.open = !state.open
     },
+    extraction_id: (state, action) => {
+      state.extraction_id = action.payload
+    }
   },
 
   extraReducers: (builder) => {
@@ -52,12 +61,14 @@ const cartSlice = createSlice({
         state.loading = true
       })
       .addCase(cart.fulfilled, (state, action) => {
+        console.log(action.payload, "action");
         state.loading = false;
         state.cartItems = action.payload?.items;
         state.total = action.payload?.cart?.total;
         state.subTotal = action.payload?.cart?.subtotal;
         state.tax = action.payload?.cart?.tax;
         state.discount = action.payload?.cart?.discount;
+        state.cart = action.payload?.cart;
       })
       .addCase(cart.rejected, (state, action) => {
         state.loading = false
@@ -66,5 +77,5 @@ const cartSlice = createSlice({
   },
 })
 
-export const { toggle } = cartSlice.actions
+export const { toggle, extraction_id } = cartSlice.actions
 export default cartSlice.reducer

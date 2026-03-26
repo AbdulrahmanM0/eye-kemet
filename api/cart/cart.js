@@ -6,7 +6,19 @@ import { getSessionToken } from "../authinticated";
 export default async function handleCart({ method = "get", formData = {} }) {
   const { customer } = await getSessionToken();
 
-  const customerData = JSON.parse(customer.value);
+  // parse
+  let customerData;
+  try {
+    customerData = customer?.value ? JSON.parse(customer.value) : null;
+  } catch (e) {
+    console.error("Failed to parse customer cookie:", e);
+    customerData = null;
+  }
+
+  // no customer
+  if (!customerData) {
+    return { data: null, status: 401 };
+  }
 
   const body = {
     ...formData,
@@ -15,19 +27,10 @@ export default async function handleCart({ method = "get", formData = {} }) {
   };
 
   try {
-    
-    const res = await axiosInstance.post(
-      `functions/v1/cart/${method}`,
-      body
-    );
-
-    return {
-      data: res.data,
-      status: res.status,
-    };
+    const res = await axiosInstance.post(`functions/v1/cart/${method}`, body);
+    return { data: res.data, status: res.status };
   } catch (error) {
-    console.log("Error:", error?.response?.data || error.message);
-
+    console.error("Error:cart", error?.response?.data || error.message);
     return {
       data: error?.response?.data,
       status: error?.response?.status,

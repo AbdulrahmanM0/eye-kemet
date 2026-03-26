@@ -38,7 +38,7 @@ function UseSubmit({ phone }) {
         // Ressponse 
         console.log("OTP verified successfully:", res);
         if (res?.session) {
-          //  start session 
+          // start session 
         setSession({ session: res?.session, customer: res?.customer });
         } else {
           if (res?.needsName && !res?.customer) {

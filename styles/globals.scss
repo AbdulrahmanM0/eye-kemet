@@ -28,7 +28,10 @@
   }
 
   .secondary-btn {
-    @apply bg-gold100 flex gap-clamp-10 py-clamp-12 px-clamp-24 text-clamp-16 font-bold text-balance uppercase leading-[0.7] rounded-[2px] w-full text-center justify-center items-center disabled:opacity-80;
+    @apply bg-gold100 hover:bg-gold200 disabled:bg-gold300 duration-300 flex gap-clamp-10 py-clamp-12 px-clamp-24 text-clamp-16 font-bold text-balance uppercase leading-[0.7] rounded-[2px] w-full text-center justify-center items-center;
+  }
+  .first-btn {
+    @apply bg-full hover:bg-gold100 disabled:bg-gold300 duration-300 w-full px-clamp-20 py-clamp-12 justify-center flex items-center gap-clamp-10 border border-gold100 text-clamp-18 text-light400 leading-[0.7];
   }
 }
 

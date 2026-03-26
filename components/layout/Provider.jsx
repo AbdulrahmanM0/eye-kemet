@@ -12,6 +12,7 @@ import AOS from "aos";
 
 
 function ProviderContainer({ children, customer }) {
+  console.log("zeftd")
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -25,8 +26,8 @@ function ProviderContainer({ children, customer }) {
         <Header {...customer}/>
         {children}
         <Footer />
-        <ToastContainer theme="dark" position="bottom-right" draggable />
         <Cart />
+        <ToastContainer theme="dark" position="bottom-right" draggable />
       </Provider>
     </div>
   )

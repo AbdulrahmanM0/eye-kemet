@@ -3,21 +3,22 @@
 import axiosInstance from "@/lib/axios";
 import { getSessionToken } from "../authinticated";
 
-export default async function handleAllAddress({ method, params = "" }) {
+export default async function handleCheckout({ data }) {
     const { token } = await getSessionToken();
 
     try {
-        const res = await axiosInstance[method](`functions/v1/customer-addresses${params}`, {
+        const res = await axiosInstance.post(`functions/v1/create-public-order?tenant_id=eq.${process.env.TENANT_ID}`, {
+            ...data
+        }, {
             headers: {
                 Authorization: `Bearer ${token}`,
+                tenant_id: process.env.TENANT_ID
             },
         }
         );
-        console.log("ressefsewe", res.data)
         return res.data;
     } catch (error) {
-        console.log("thiss is sthe rerror", error)
-
+        console.log("this is sthe rerror", error?.response)
         return error?.response?.data || { error: "Server error" };
     }
 }

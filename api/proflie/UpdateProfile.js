@@ -12,6 +12,7 @@ export default async function handleUpdateProfile({ code, name, email, birthday,
                 code,
                 name,
                 email,
+                birthday,
                 gender,
             }
         }, {

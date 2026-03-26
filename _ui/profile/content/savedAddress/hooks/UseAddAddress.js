@@ -20,7 +20,6 @@ const addressSchema = z.object({
 });
 
 function UseAddAddress({ label, address, street, building_number, floor, is_default, id, method }) {
-  console.log(id, "ididd")
   const router = useRouter()
   const {
     register,
@@ -50,6 +49,7 @@ function UseAddAddress({ label, address, street, building_number, floor, is_defa
     setSubmitError(null);
     try {
       const res = await handleAddress({ data, method });
+      toast.success(res?.data?.message || "Done successfully.");
       router.push("/profile/address");
       router.refresh();
       // reset(); 

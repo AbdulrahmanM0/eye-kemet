@@ -2,7 +2,7 @@ import { paymentmethods } from '@/data/payment'
 import Image from 'next/image'
 import React from 'react'
 
-function PaymentMethod() {
+function PaymentMethod({register}) {
     return (
         <section className='grid grid-cols-1 sm:grid-cols-2 gap-clamp-20 min-w-[320px]'>
             <div className="sm:col-span-2 flex flex-col gap-clamp-24">

@@ -12,9 +12,9 @@ async function FilterSection({deals}) {
                 <div className='flex flex-wrap justify-between gap-clamp-42'>
                     {/* filter  */}
                     <div className='order-2 md:order-1  flex gap-clamp-64 items-center overflow-auto'>
-                        <div className='text-light200 text-clamp-16 leading-[0.7] whitespace-nowrap'>
+                        {/* <div className='text-light200 text-clamp-16 leading-[0.7] whitespace-nowrap'>
                             Filter by :
-                        </div>
+                        </div> */}
                         <div>
                             <FilterDrawer filter_products={filter_products}/>
                         </div>

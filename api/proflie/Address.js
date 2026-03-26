@@ -3,11 +3,11 @@
 import axiosInstance from "@/lib/axios";
 import { getSessionToken } from "../authinticated";
 
-export default async function handleAddress({ data, method,params }) {
+export default async function handleAddress({ data, method }) {
     const { token } = await getSessionToken();
 
     try {
-        const res = await axiosInstance[method](`functions/v1/customer-addresses${params}`, {
+        const res = await axiosInstance[method](`functions/v1/customer-addresses`, {
             ...data
         }, {
             headers: {

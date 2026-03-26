@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 
 function useCart() {
-    const { cartItems, subTotal, total, discount , loading } = useSelector((state) => state.cartReducer);
+    const { cartItems, subTotal, total, discount, loading, extraction_id } = useSelector((state) => state.cartReducer);
     const [capaigns, setCampaigns] = useState([])
 
     const dispatch = useDispatch();
@@ -47,7 +47,7 @@ function useCart() {
     }
 
     return {
-        handleCartToggle, cartItems, subTotal, total, discount, handleRemoveItem, handleUpdateItem, handleClearCart, capaigns , loading
+        handleCartToggle, cartItems, subTotal, total, discount, handleRemoveItem, handleUpdateItem, handleClearCart, capaigns, loading, extraction_id
     }
 }
 

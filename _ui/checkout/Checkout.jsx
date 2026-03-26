@@ -1,24 +1,12 @@
 import Description from './utilies/Description'
+import FormProvider from './utilies/forms/FormProvider'
 import PaymentSummary from './utilies/PaymentSummary'
 
-function Checkout() {
+function Checkout({ profile, getorders, extraction_id , customer }) {
+  const {name,email,phone} = customer;
   return (
     <section>
-      <div className='px-clamp-100 bg-full'>
-        <div className='flex flex-wrap gap-clamp-100 justify-center'>
-
-          {/* cols 1  */}
-          <div className='py-clamp-100 flex-1'>
-              <Description />
-          </div>
-
-          {/* cols 2 */}
-          <div className='py-clamp-100 '>
-            <PaymentSummary />
-          </div>
-
-        </div>
-      </div>
+      <FormProvider name={name} email={email} phone={phone} extraction_id={extraction_id} getorders={getorders} customer={customer} />
     </section>
   )
 }
